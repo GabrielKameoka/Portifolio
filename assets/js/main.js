@@ -4,7 +4,7 @@ window.addEventListener('scroll', () => {
     const windowHeight = window.innerHeight;
     const scrollPosition = window.scrollY;
   
-    if (scrollPosition >= techSectionTop - windowHeight + 700) {
+    if (scrollPosition >= techSectionTop - windowHeight + 480) {
       techSection.classList.add('show');
     } else {
       techSection.classList.remove('show');
@@ -17,7 +17,7 @@ window.addEventListener('scroll', () => {
     const windowHeight = window.innerHeight;
     const scrollPosition = window.scrollY;
   
-    if (scrollPosition >= conteudoPTop - windowHeight + 780 ) {
+    if (scrollPosition >= conteudoPTop - windowHeight + 480 ) {
       conteudoP.classList.add('show');
     } else {
       conteudoP.classList.remove('show');

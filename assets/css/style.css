@@ -135,8 +135,9 @@ a {
 }
 
 footer {
-  margin-top: -67px;
+  margin-top: -30px;
   background-color: #000000;
+  width: 100%;
 }
 .conteudo-f {
   height: 230px;
@@ -202,6 +203,7 @@ footer {
   .projetos-p {
     flex-direction: column; /* Display projects in a single column */
     gap: 30px;
+    align-items: center;
   }
 
   .logos-eu {
@@ -227,11 +229,8 @@ footer {
     flex-direction: column;
     height: 40vh;
   }
-  .contato{
-    margin-left: -80px;
-  }
   .descricao-p1{
-    width: 350px;
+    width: 367px;
   }
   .projetos-p{
     flex-direction: column;
@@ -249,7 +248,9 @@ footer {
   }
 }
 @media (max-width: 570px) {
+  
   #portifolio {
+    padding-top: 200px;
     height: 130vh;
     background-color: #141414;
     background-size: 100%;
@@ -267,8 +268,27 @@ footer {
     flex-direction: column;
     height: 40vh;
   }
-  .contato{
-    margin-left: -80px;
+}
+
+@media (max-width: 390px) {
+  #portifolio{
+    padding-top: 200px;
+    margin-bottom: 30px;
+  }
+  .projetos-p{
+    margin-bottom: 30px;
+  }
+  html{
+    margin-right: -17px;
+  }
+  .conteudo-f{
+    flex-direction: column;
+    gap: 20px;
+  }
+  footer{
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
   }
 }
 
