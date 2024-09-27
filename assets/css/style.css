@@ -1,0 +1,134 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Arimo', sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+  background-image: url("../img/background-img1.jpg");
+  background-repeat: no-repeat;
+  background-size: 210vh;
+}
+.logos {
+  width: 70px;
+}
+.projeto-img {
+  width: 300px;
+}
+header {
+  margin: 50px 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 40px auto;
+}
+nav,
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.nav-header{
+    display: flex;
+    gap: 40px;
+}
+.nav-header a {
+  color: #ffffff; /* Cor padrão da fonte */
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+  transition: color 0.3s; /* Adiciona a transição de cor em 0.5 segundos */
+}
+
+.nav-header a:hover {
+  color: #668284; /* Cor ao passar o mouse */
+  text-shadow: 1px 1px 20px #668284;
+}
+
+#home{
+    height: 100vh;
+    color: #ffffff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tech{
+    margin: 50px 350px;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40%;
+}
+.ferramentas{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+.ferramentas .container .logos{
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    width: 70px;
+}
+
+#portifolio{
+    background-color: #141414;
+    background-size: 100%;
+}
+.conteudo-p{
+    color: #ffffff;
+    margin: 50px 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    flex-direction: column;
+    gap: 100px;
+}
+.projetos-p
+{
+    display: flex;
+    gap: 150px;
+}
+.projeto-img{
+    border-radius: 10px;
+}
+
+footer{
+    margin-top: -67px;
+    background-color: #000000;
+}
+.conteudo-f{
+    height: 300px;
+    color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+.contato{
+    display: flex;
+    flex-direction: column;
+    transition: color 0.3s;
+}
+.redes-sociais{
+    display: flex;
+    flex-direction: column;
+    transition: color 0.3s;
+}
+.linha-horizontal {
+    border-bottom: 1px dashed #ccc;
+    margin: 17px; 
+}
+.redes-sociais a:hover{
+    color: #668284;
+}
+.logos-eu{
+    width: 100px;
+}
