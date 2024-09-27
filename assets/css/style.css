@@ -91,6 +91,11 @@ a {
   border-radius: 10px;
   box-shadow: 10px 10px 40px #b9b9b9;
   transition: 0.4s;
+  width: 350px;
+}
+#logo-csharp{
+  height: 70px;
+  width: 70px;
 }
 .ferramentas .container:hover {
   box-shadow: 10px 10px 20px #b9b9b9;
@@ -105,11 +110,11 @@ a {
 
 #portifolio {
   background-color: #141414;
-  background-size: 100%;
+  height: 120vh;
 }
 .conteudo-p {
   color: #ffffff;
-  margin: 50px 350px;
+  margin: 0 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,9 +186,8 @@ footer {
   }
 
   #home,
-  #tech,
-  #portifolio {
-    height: 100vh; /* Adjust section heights as needed */
+  #tech{
+    height: 110vh; /* Adjust section heights as needed */
   }
 
   .ferramentas {
@@ -219,17 +223,29 @@ footer {
   .ferramentas {
     flex-direction: column;
   }
-  #portifolio {
+  .conteudo-f {
+    flex-direction: column;
+    height: 40vh;
+  }
+  .contato{
+    margin-left: -80px;
+  }
+  .descricao-p1{
+    width: 350px;
+  }
+  .projetos-p{
+    flex-direction: column;
+    width: 350px;
+  }
+  #portifolio{
+    padding-top: 50px;
+  }
+  .conteudo-p{
+    margin-left: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  .projetos-p {
-    flex-direction: column;
-  }
-  .conteudo-p .descricao-p1 {
-    margin-top: 400px;
   }
 }
 @media (max-width: 570px) {
@@ -240,15 +256,13 @@ footer {
   }
   #tech {
     margin-left: 10%;
+    width: 80%;
   }
   .conteudo-p{
     margin-bottom: 500px;
   }
 }
 @media (max-width: 440px) {
-  #tech {
-    width: 380px;
-  }
   .conteudo-f {
     flex-direction: column;
     height: 40vh;
@@ -256,16 +270,6 @@ footer {
   .contato{
     margin-left: -80px;
   }
-}
-
-/* Screens between 768px and 992px (tablets) */
-@media (min-width: 768px) and (max-width: 992px) {
-  /* Add specific styles for medium-sized screens if needed */
-}
-
-/* Screens larger than 992px (desktops) */
-@media (min-width: 992px) {
-  /* Maintain existing styles for larger screens */
 }
 
 #tech {
