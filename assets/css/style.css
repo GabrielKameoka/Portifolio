@@ -1,10 +1,10 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Arimo', sans-serif;
+  font-family: "Arimo", sans-serif;
 }
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 body {
   background-image: url("../img/background-img1.jpg");
@@ -23,16 +23,15 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 40px auto;
 }
 nav,
 a {
   text-decoration: none;
   color: #ffffff;
 }
-.nav-header{
-    display: flex;
-    gap: 40px;
+.nav-header {
+  display: flex;
+  gap: 40px;
 }
 .nav-header a {
   color: #ffffff; /* Cor padrão da fonte */
@@ -45,90 +44,248 @@ a {
   text-shadow: 1px 1px 20px #668284;
 }
 
-#home{
-    height: 100vh;
-    color: #ffffff;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#home {
+  height: 100vh;
+  color: #ffffff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#home h1 {
+  transition: all 0.4s ease-in-out; /* Aplica transição a todas as propriedades */
+  padding: 40px; /* Valor inicial do padding */
+  border-radius: 20px;
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.3); /* Sombra inicial */
 }
 
-#tech{
-    margin: 50px 350px;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 40%;
-}
-.ferramentas{
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-}
-.ferramentas .container .logos{
-    margin: 10px 0;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    width: 70px;
+#home h1:hover {
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 20px 20px 80px rgba(0, 0, 0, 0.7);
 }
 
-#portifolio{
-    background-color: #141414;
-    background-size: 100%;
-}
-.conteudo-p{
-    color: #ffffff;
-    margin: 50px 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 110vh;
-    flex-direction: column;
-    gap: 100px;
-}
-.projetos-p
-{
-    display: flex;
-    gap: 150px;
-}
-.projeto-img{
-    border-radius: 10px;
+#home h1:not(:hover) {
+  /* Estilos para quando o mouse não está sobre o elemento */
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-footer{
-    margin-top: -67px;
-    background-color: #000000;
+#tech {
+  margin: 50px 350px;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40%;
 }
-.conteudo-f{
-    height: 300px;
-    color: #ffffff;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10%;
+.ferramentas {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
-.contato{
-    display: flex;
-    flex-direction: column;
-    transition: color 0.3s;
+.ferramentas .container {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 40px #b9b9b9;
+  transition: 0.4s;
 }
-.redes-sociais{
-    display: flex;
-    flex-direction: column;
-    transition: color 0.3s;
+.ferramentas .container:hover {
+  box-shadow: 10px 10px 20px #b9b9b9;
+}
+.ferramentas .container .logos {
+  margin: 10px 0;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  width: 70px;
+}
+
+#portifolio {
+  background-color: #141414;
+  background-size: 100%;
+}
+.conteudo-p {
+  color: #ffffff;
+  margin: 50px 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110vh;
+  flex-direction: column;
+  gap: 100px;
+}
+.projetos-p {
+  display: flex;
+  gap: 150px;
+}
+.projetos-p a:hover {
+  transition: color 0.3s;
+  color: #668284;
+}
+.projeto-img {
+  border-radius: 10px;
+}
+
+footer {
+  margin-top: -67px;
+  background-color: #000000;
+}
+.conteudo-f {
+  height: 230px;
+  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+.contato {
+  display: flex;
+  flex-direction: column;
+  transition: color 0.3s;
+}
+.redes-sociais {
+  display: flex;
+  flex-direction: column;
+  transition: color 0.3s;
 }
 .linha-horizontal {
-    border-bottom: 1px dashed #ccc;
-    margin: 17px; 
+  border-bottom: 1px dashed #ccc;
+  margin: 17px;
 }
-.redes-sociais a:hover{
-    color: #668284;
+.redes-sociais a:hover {
+  transition: color 0.3s;
+  color: #668284;
 }
-.logos-eu{
-    width: 100px;
+.contato a:hover {
+  transition: color 0.3s;
+  color: #668284;
 }
+.logos-eu {
+  width: 100px;
+}
+/* Screens smaller than 768px (phones) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Stack elements vertically on small screens */
+    margin: 20px auto; /* Center header horizontally */
+    align-items: center; /* Center elements vertically */
+    gap: 20px;
+  }
+
+  .nav-header {
+    gap: 10px; /* Reduce gap between navigation links */
+  }
+
+  #home,
+  #tech,
+  #portifolio {
+    height: 100vh; /* Adjust section heights as needed */
+  }
+
+  .ferramentas {
+    flex-direction: row; /* Display tool sections side-by-side on small screens */
+    gap: 20px;
+  }
+
+  .conteudo-p {
+    gap: 50px; /* Reduce gap between portfolio sections */
+  }
+
+  .projetos-p {
+    flex-direction: column; /* Display projects in a single column */
+    gap: 30px;
+  }
+
+  .logos-eu {
+    width: 70px; /* Adjust logo size for smaller screens */
+  }
+  #tech {
+    flex-direction: column;
+    gap: 20px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20%;
+  }
+  .projetos-p {
+    flex-direction: row;
+  }
+}
+@media (max-width: 670px) {
+  .ferramentas {
+    flex-direction: column;
+  }
+  #portifolio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .projetos-p {
+    flex-direction: column;
+  }
+  .conteudo-p .descricao-p1 {
+    margin-top: 400px;
+  }
+}
+@media (max-width: 570px) {
+  #portifolio {
+    height: 130vh;
+    background-color: #141414;
+    background-size: 100%;
+  }
+  #tech {
+    margin-left: 10%;
+  }
+  .conteudo-p{
+    margin-bottom: 500px;
+  }
+}
+@media (max-width: 440px) {
+  #tech {
+    width: 380px;
+  }
+  .conteudo-f {
+    flex-direction: column;
+    height: 40vh;
+  }
+  .contato{
+    margin-left: -80px;
+  }
+}
+
+/* Screens between 768px and 992px (tablets) */
+@media (min-width: 768px) and (max-width: 992px) {
+  /* Add specific styles for medium-sized screens if needed */
+}
+
+/* Screens larger than 992px (desktops) */
+@media (min-width: 992px) {
+  /* Maintain existing styles for larger screens */
+}
+
+#tech {
+    margin-top: 100px; /* Adjust this value to control the initial offset */
+    opacity: 0;
+    transform: translateY(50px); /* Initial position off the screen */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  
+  #tech.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .conteudo-p {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  
+  .conteudo-p.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
