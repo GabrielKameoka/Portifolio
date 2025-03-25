@@ -25,10 +25,9 @@
   </head>
   <body class="bg-[#F0F4F9] font-montserrat dark:bg-gray-900 transition">
     <header
-      class="fixed w-full top-0 flex items-center justify-between p-6 z-50 bg-[#F0F4F9]/30 backdrop-blur-md dark:bg-gray-900/30 dark:backdrop-blur-md transition"
+      class="fixed w-full top-0 flex items-center justify-around sm:justify-between p-6 pr-10 pl-10 sm:pl-0 sm:pr-0 z-50 bg-[#F0F4F9]/30 backdrop-blur-md dark:bg-gray-900/30 dark:backdrop-blur-md transition"
     >
-      <!-- Contêiner para os links, centralizando-os -->
-      <nav class="flex-1 flex justify-evenly space-x-8 dark:text-white">
+      <nav class="flex-1 flex justify-evenly space-x-8 dark:text-white flex-wrap">
         <a href="#inicio" class="menu-link" id="link-inicio">INICIO</a>
         <a href="#projetos" class="menu-link" id="link-projetos">PROJETOS</a>
       </nav>
@@ -85,22 +84,22 @@
         >
           <div class="titulo flex items-center gap-5">
             <p class="flex whitespace-nowrap">Gabrie Mitsuru</p>
-            <hr class="w-1/1" />
+            <hr class="w-40 sm-80" />
           </div>
-          <h1 class="text-5xl font-semibold">
+          <h1 class="text-4xl font-regular sm:font-semibold">
             Desenvolvedor .NET <br />
             Full-stack
           </h1>
-          <div class="botoes flex justify-between">
+          <div class="botoes flex justify-between flex-wrap gap-10 sm:gap-0">
             <a
               id="botaolinkedin"
-              class="px-9 py-4 border text-black rounded hover:bg-[#00CD07] hover:text-white transition dark:text-white"
+              class="w-[150px] h-[58px] px-9 py-4 border text-black rounded hover:bg-[#00CD07] hover:text-white transition dark:text-white"
               target="_blank"
               href="https://www.linkedin.com/in/gabriel-mitsuru/"
               >LINKEDIN</a
             >
             <a
-              class="px-9 py-4 border border-slate-400 text-black rounded hover:bg-slate-400 hover:text-white transition dark:text-white"
+              class="w-[150px] h-[58px] px-9 py-4 border border-slate-400 text-black rounded hover:bg-slate-400 hover:text-white transition dark:text-white"
               href="#projetos"
               >PROJETOS</a
             >
@@ -115,14 +114,14 @@
           <div class="dark:text-white">
             <div class="flex items-center gap-5 mb-10 sobremim">
               <p class="flex whitespace-nowrap">Sobre mim</p>
-              <hr class="w-80" />
+              <hr class="w-40 sm-80" />
             </div>
             <p class="flex justify-center sm:justify-start">
-              Sou um Desenvolvedor .NET Full Stack <br />apaixonado por
-              tecnologia e inovação. <br />Com experiência no ecossistema
-              .NET,<br />
-              desenvolvo aplicações combinando C#,<br />
-              ASP.NET Core, Entity Framework,<br />
+              Sou um Desenvolvedor .NET Full Stack apaixonado por
+              tecnologia e inovação. Com experiência no ecossistema
+              .NET,
+              desenvolvo aplicações combinando C#,
+              ASP.NET Core, Entity Framework,
               SQL Server, e Front-end com Tailwind.
             </p>
           </div>
@@ -130,10 +129,10 @@
           <div>
             <div class="flex items-center gap-5 mb-10 habilidades">
               <p>Habilidades</p>
-              <hr class="w-full" />
+              <hr class="w-40 sm-80" />
             </div>
 
-            <div class="tags flex flex-wrap gap-4 w-100">
+            <div class="tags flex flex-wrap gap-4 sm:w-100">
               <div
                 class="flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:bg-violet-500 hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
               >
@@ -209,14 +208,14 @@
       >
         <div class="flex flex-col gap-6 mb-10">
           <h1 class="titulo text-center">PROJETOS</h1>
-          <p class="text-center dark:text-white">
-            Estes são alguns dos meus trabalhos que realizei durante a minha
+          <p class="text-center dark:text-white text-wrap">
+            Estes são alguns dos meus trabalhos que <br> realizei durante a minha
             jornada.
           </p>
         </div>
 
         <div
-          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 transition dark:bg-slate-800"
+          class="flex flex-col lg:flex-row w-90 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 transition dark:bg-slate-800"
           data-aos="fade-up"
           data-aos-duration="1000"
         >
@@ -226,18 +225,20 @@
             alt=""
           />
           <div
-            class="flex flex-col w-100 gap-1 pt-2 pb-2 pr-8 pl-8 dark:text-white"
+            class="flex flex-col w-90 gap-1 pt-2 pb-2 pr-3 pl-3 dark:text-white"
           >
             <h1 class="text-center text-center text-3xl font-semibold mb-4">
               Indies
             </h1>
-            <p>
-              Neste projeto, desenvolvido em ASP.NET MVC, você pode criar o seu
-              usuário e cadastrar músicas não muito conhecidas. Durante o
-              desenvolvimento, foi fundamentalmente aprendido manipulação de
-              entidades do banco de dados, o principal desafio do projeto.
+            <p class="text-wrap">
+              Neste projeto, desenvolvido em ASP.NET <br />
+              MVC, você pode criar o seu usuário e <br />
+              cadastrar músicas não muito conhecidas. Durante o desenvolvimento,
+              foi fundamentalmente aprendido <br />
+              manipulação de entidades do banco de <br />
+              dados, o principal desafio do projeto.
             </p>
-            <div class="flex justify-between">
+            <div class="flex gap-15 sm:justify-between">
               <div class="flex items-center gap-2">
                 <div
                   class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
@@ -245,7 +246,7 @@
                   ASP.NET
                 </div>
                 <div
-                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600 whitespace-nowrap"
                 >
                   SQL Server
                 </div>
@@ -269,21 +270,26 @@
         </div>
 
         <div
-          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 dark:text-white dark:bg-slate-800"
+          class="flex flex-col lg:flex-row w-90 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 dark:text-white dark:bg-slate-800"
           data-aos="fade-up"
           data-aos-duration="1000"
         >
-          <div class="flex flex-col w-100 gap-1 pt-2 pb-2 pr-8 pl-8">
+        <img
+          class="lg:w-[360px] rounded-lg"
+          src="./assets/img/1176276.jpg"
+          alt=""
+        />
+          <div class="flex flex-col w-90 gap-1 pt-2 pb-2 pr-3 pl-3 dark:text-white">
             <h1 class="text-center text-center text-3xl font-semibold mb-4">
               Apenda+
             </h1>
-            <p>
+            <p class="text-wrap">
               Este projeto foi feito em grupo no curso de Desenvolvimento Web
-              pelo Institutto da Oportunidade social. Desafios como soft-skills
-              foram desenvolvidas durante o projeto, sendo ela o maior desafio
+              pelo Institutto da Oportunidade social. Desafios como <br> soft-skills
+              foram desenvolvidas durante o projeto, sendo ela o maior desafio <br>
               do projeto.
             </p>
-            <div class="flex justify-between">
+            <div class="flex gap-13 sm:justify-between">
               <div class="flex items-center gap-2">
                 <div
                   class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
@@ -317,15 +323,10 @@
               </a>
             </div>
           </div>
-          <img
-            class="lg:w-[360px] rounded-lg"
-            src="./assets/img/1176276.jpg"
-            alt=""
-          />
         </div>
 
         <div
-          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 dark:text-white dark:bg-slate-800"
+          class="flex flex-col lg:flex-row w-90 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 dark:text-white dark:bg-slate-800"
           data-aos="fade-up"
           data-aos-duration="1000"
         >
@@ -334,17 +335,17 @@
             src="./assets/img/7097422.jpg"
             alt=""
           />
-          <div class="flex flex-col w-100 gap-1 pt-2 pb-2 pr-8 pl-8">
+          <div class="flex flex-col w-90 gap-1 pt-2 pb-2 pr-3 pl-3 dark:text-white">
             <h1 class="text-center text-center text-3xl font-semibold mb-4">
               CRUD Livros
             </h1>
-            <p>
+            <p class="text-wrap">
               Afim de aprimorar os meus conhecimentos em ASP.NET, este projeto
-              foi desenvolvido no editor Rider, que até então, nunca foi usado
-              por mim. O aplicativo foi finalizado com sucesso sem muitos
-              desafios, porem, com uma grande gama de conhecimentos.
+              foi desenvolvido <br> no editor Rider, que até então, nunca <br> foi usado
+              por mim. O aplicativo foi <br> finalizado com sucesso sem muitos <br>
+              desafios, porem, com uma grande gama <br> de conhecimentos.
             </p>
-            <div class="flex justify-between">
+            <div class="flex gap-15 sm:justify-between">
               <div class="flex items-center gap-2">
                 <div
                   class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
@@ -352,7 +353,7 @@
                   ASP.NET
                 </div>
                 <div
-                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600 whitespace-nowrap"
                 >
                   SQL Server
                 </div>
