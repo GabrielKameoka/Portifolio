@@ -1,70 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
       rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link
+      rel="icon"
+      href="./assets/img/logo__1_-removebg-preview (1).png"
+      type="image/x-icon"
     />
     <title>Gabriel Mitsuru</title>
   </head>
-  <body class="bg-[#F0F4F9]">
-    <header class="sticky top-0 flex justify-evenly p-12">
-      <a href="#inicio">INICIO</a>
-      <a href="#projetos">PROJETOS</a>
+  <body class="bg-[#F0F4F9] font-montserrat dark:bg-gray-900 transition">
+    <header
+      class="fixed w-full top-0 flex items-center justify-between p-6 z-50 bg-[#F0F4F9]/30 backdrop-blur-md dark:bg-gray-900/30 dark:backdrop-blur-md transition"
+    >
+      <!-- Contêiner para os links, centralizando-os -->
+      <nav class="flex-1 flex justify-evenly space-x-8 dark:text-white">
+        <a href="#inicio" class="menu-link" id="link-inicio">INICIO</a>
+        <a href="#projetos" class="menu-link" id="link-projetos">PROJETOS</a>
+      </nav>
+
+      <button
+        id="theme-toggle"
+        class="relative w-12 h-12 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 shadow-lg transition-all duration-300 ease-in-out hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-gray-400 dark:focus:ring-gray-600"
+        aria-label="Alternar tema"
+        role="button"
+      >
+        <svg
+          id="sun-icon"
+          class="absolute w-6 h-6 text-yellow-500 transition-transform duration-300 ease-in-out dark:rotate-180 opacity-100 dark:opacity-0"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 2v2m0 16v2m8-10h2M2 12H4m15.364-7.364l1.414 1.414M4.222 4.222l1.414 1.414M19.778 19.778l-1.414-1.414M4.222 19.778l1.414-1.414M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
+
+        <svg
+          id="moon-icon"
+          class="absolute w-6 h-6 text-gray-700 dark:text-gray-200 transition-transform duration-300 ease-in-out rotate-180 dark:rotate-0 opacity-0 dark:opacity-100"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"
+          />
+        </svg>
+      </button>
     </header>
 
     <main>
-      <div id="inicio" class="flex h-screen">
-        <div class="esquerdo flex flex-col gap-16">
-          <div class="flex items-center gap-5">
-            <p>Gabrie Mitsuru</p>
+      <div
+        id="inicio"
+        class="flex items-center flex-col lg:flex-row justify-around h-screen p-30"
+      >
+        <div
+          class="esquerdo flex flex-col gap-16 dark:text-white"
+          data-aos="fade-up"
+          data-aos-duration="500"
+        >
+          <div class="titulo flex items-center gap-5">
+            <p class="flex whitespace-nowrap">Gabrie Mitsuru</p>
             <hr class="w-1/1" />
           </div>
-          <h1>
+          <h1 class="text-5xl font-semibold">
             Desenvolvedor .NET <br />
             Full-stack
           </h1>
-          <div class="botoes flex">
+          <div class="botoes flex justify-between">
             <a
-              class="px-4 py-2 border border-primary text-black rounded hover:bg-primary transition"
+              id="botaolinkedin"
+              class="px-9 py-4 border text-black rounded hover:bg-[#00CD07] hover:text-white transition dark:text-white"
               target="_blank"
               href="https://www.linkedin.com/in/gabriel-mitsuru/"
               >LINKEDIN</a
             >
             <a
-              class="px-4 py-2 border border-gray-500 text-gray-700 rounded hover:bg-gray-100 transition"
+              class="px-9 py-4 border border-slate-400 text-black rounded hover:bg-slate-400 hover:text-white transition dark:text-white"
               href="#projetos"
               >PROJETOS</a
             >
           </div>
         </div>
 
-        <div class="direito flex flex-col gap-16">
-          <div class="sobremim">
-            <div class="flex items-center gap-5">
-              <p>Sobre mim</p>
-              <hr class="w-1/1" />
+        <div
+          class="direito flex flex-col gap-16 sm:p-30 mt-50 sm:mt-0"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <div class="dark:text-white">
+            <div class="flex items-center gap-5 mb-10 sobremim">
+              <p class="flex whitespace-nowrap">Sobre mim</p>
+              <hr class="w-80" />
             </div>
-            <p>
-              Sou um desenvolvedor web com experiência nas aplicações .NET.
-              Busco constantemente aprimorar minhas habilidades e contribuir
-              para projetos inovadores.
+            <p class="flex justify-center sm:justify-start">
+              Sou um Desenvolvedor .NET Full Stack <br />apaixonado por
+              tecnologia e inovação. <br />Com experiência no ecossistema
+              .NET,<br />
+              desenvolvo aplicações combinando C#,<br />
+              ASP.NET Core, Entity Framework,<br />
+              SQL Server, e Front-end com Tailwind.
             </p>
           </div>
 
-          <div class="habilidades">
-            <div class="flex items-center gap-5">
+          <div>
+            <div class="flex items-center gap-5 mb-10 habilidades">
               <p>Habilidades</p>
-              <hr class="w-1/1" />
+              <hr class="w-full" />
             </div>
 
-            <div class="tags">
-              <div class="flex gap-1">
+            <div class="tags flex flex-wrap gap-4 w-100">
+              <div
+                class="flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:bg-violet-500 hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+              >
                 <img
                   class="w-6"
                   src="./assets/img/dotnet.jpg"
@@ -72,42 +144,54 @@
                 />
                 <p>.NET</p>
               </div>
-              <div class="flex gap-1">
+              <div
+                class="flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:bg-amber-500 hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+              >
                 <img
                   class="w-6"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
                 />
                 <p>HTML</p>
               </div>
-              <div class="flex gap-1">
+              <div
+                class="flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:bg-blue-400 hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+              >
                 <img
                   class="w-6"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
                 />
                 <p>CSS</p>
               </div>
-              <div class="flex gap-1">
+              <div
+                class="flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:bg-red-500 hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+              >
                 <img
                   class="w-6"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
                 />
                 <p>SQL Server</p>
               </div>
-              <div class="flex gap-1">
+              <div
+                class="flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:bg-cyan-300 hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+              >
                 <img
                   class="w-6"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
                 />
                 <p>Tailwind</p>
               </div>
-              <div class="flex gap-1">
+              <div
+                class="flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:bg-purple-500 hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+              >
                 <img
                   class="w-6"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
                 />
-                <p>bootstrap</p>
+                <p>Bootstrap</p>
               </div>
-              <div class="flex gap-1">
+              <div
+                class="flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:bg-orange-400 hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+              >
                 <img
                   class="w-6"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
@@ -119,24 +203,31 @@
         </div>
       </div>
 
-      <div id="projetos" class="mb-50 flex flex-col items-center">
-        <div class="flex flex-col gap-6 mb-30">
-          <h1 class="text-center">PROJETOS</h1>
-          <p class="text-center">
+      <div
+        id="projetos"
+        class="mb-50 flex flex-col items-center pt-40 mt-100 sm:mt-0 sm:pt-30"
+      >
+        <div class="flex flex-col gap-6 mb-10">
+          <h1 class="titulo text-center">PROJETOS</h1>
+          <p class="text-center dark:text-white">
             Estes são alguns dos meus trabalhos que realizei durante a minha
             jornada.
           </p>
         </div>
 
         <div
-          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10"
+          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 transition dark:bg-slate-800"
+          data-aos="fade-up"
+          data-aos-duration="1000"
         >
           <img
             class="lg:w-[360px] rounded-lg"
             src="./assets/img/indies.png"
             alt=""
           />
-          <div class="flex flex-col w-100 gap-1 pt-2 pb-2 pr-8 pl-8">
+          <div
+            class="flex flex-col w-100 gap-1 pt-2 pb-2 pr-8 pl-8 dark:text-white"
+          >
             <h1 class="text-center text-center text-3xl font-semibold mb-4">
               Indies
             </h1>
@@ -148,13 +239,19 @@
             </p>
             <div class="flex justify-between">
               <div class="flex items-center gap-2">
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
                   ASP.NET
                 </div>
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
                   SQL Server
                 </div>
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
                   Bootstrap
                 </div>
               </div>
@@ -163,7 +260,7 @@
                 href="https://github.com/GabrielKameoka/Indies"
               >
                 <img
-                  class="w-10 mt-2 sm:mt-0"
+                  class="w-10 mt-2 sm:mt-0 dark:invert"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
                 />
               </a>
@@ -172,36 +269,49 @@
         </div>
 
         <div
-          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10"
+          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 dark:text-white dark:bg-slate-800"
+          data-aos="fade-up"
+          data-aos-duration="1000"
         >
           <div class="flex flex-col w-100 gap-1 pt-2 pb-2 pr-8 pl-8">
             <h1 class="text-center text-center text-3xl font-semibold mb-4">
-              Indies
+              Apenda+
             </h1>
             <p>
-              Neste projeto, desenvolvido em ASP.NET MVC, você pode criar o seu
-              usuário e cadastrar músicas não muito conhecidas. Durante o
-              desenvolvimento, foi fundamentalmente aprendido manipulação de
-              entidades do banco de dados, o principal desafio do projeto.
+              Este projeto foi feito em grupo no curso de Desenvolvimento Web
+              pelo Institutto da Oportunidade social. Desafios como soft-skills
+              foram desenvolvidas durante o projeto, sendo ela o maior desafio
+              do projeto.
             </p>
             <div class="flex justify-between">
               <div class="flex items-center gap-2">
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
-                  ASP.NET
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
+                  HTML
                 </div>
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
-                  SQL Server
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
+                  CSS
                 </div>
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
-                  Bootstrap
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
+                  JavaScript
+                </div>
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
+                  GitHub
                 </div>
               </div>
               <a
                 target="_blank"
-                href="https://github.com/GabrielKameoka/Indies"
+                href="https://github.com/andreluiswebdev/AprendaMais"
               >
                 <img
-                  class="w-10 mt-2 sm:mt-0"
+                  class="w-10 mt-2 sm:mt-0 dark:invert"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
                 />
               </a>
@@ -209,38 +319,46 @@
           </div>
           <img
             class="lg:w-[360px] rounded-lg"
-            src="./assets/img/indies.png"
+            src="./assets/img/1176276.jpg"
             alt=""
           />
         </div>
 
         <div
-          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10"
+          class="flex flex-col lg:flex-row w-100 lg:w-[760px] rounded-lg shadow-lg mx-auto m-10 dark:text-white dark:bg-slate-800"
+          data-aos="fade-up"
+          data-aos-duration="1000"
         >
           <img
             class="lg:w-[360px] rounded-lg"
-            src="./assets/img/indies.png"
+            src="./assets/img/7097422.jpg"
             alt=""
           />
           <div class="flex flex-col w-100 gap-1 pt-2 pb-2 pr-8 pl-8">
             <h1 class="text-center text-center text-3xl font-semibold mb-4">
-              Indies
+              CRUD Livros
             </h1>
             <p>
-              Neste projeto, desenvolvido em ASP.NET MVC, você pode criar o seu
-              usuário e cadastrar músicas não muito conhecidas. Durante o
-              desenvolvimento, foi fundamentalmente aprendido manipulação de
-              entidades do banco de dados, o principal desafio do projeto.
+              Afim de aprimorar os meus conhecimentos em ASP.NET, este projeto
+              foi desenvolvido no editor Rider, que até então, nunca foi usado
+              por mim. O aplicativo foi finalizado com sucesso sem muitos
+              desafios, porem, com uma grande gama de conhecimentos.
             </p>
             <div class="flex justify-between">
               <div class="flex items-center gap-2">
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
                   ASP.NET
                 </div>
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
                   SQL Server
                 </div>
-                <div class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs">
+                <div
+                  class="bg-[#D9D9D9] pr-2 pl-2 rounded-3xl text-xs dark:bg-slate-600"
+                >
                   Bootstrap
                 </div>
               </div>
@@ -249,7 +367,7 @@
                 href="https://github.com/GabrielKameoka/Indies"
               >
                 <img
-                  class="w-10 mt-2 sm:mt-0"
+                  class="w-10 mt-2 sm:mt-0 dark:invert"
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
                 />
               </a>
@@ -260,22 +378,22 @@
     </main>
 
     <footer class="flex flex-col gap-16 pt-10 bg-black text-white">
-      <div class="flex justify-evenly">
+      <div class="flex justify-evenly flex-col items-center md:flex-row gap-10">
         <div>
-          <h1>
+          <h1 class="text-5xl">
             Gabriel Mitsuru <br />
-            <span>Web Developer</span>
+            <span class="text-2xl">Web Developer</span>
           </h1>
         </div>
 
-        <div>
-          <h1>Mapa:</h1>
+        <div class="flex flex-col">
+          <h1 class="m-1">Mapa:</h1>
           <a href="#inicio">Início</a>
           <a href="#projetos">Projetos</a>
         </div>
 
-        <div>
-          <h1>Contato:</h1>
+        <div class="flex flex-col">
+          <h1 class="m-1">Contato:</h1>
           <a href="#">Instagram</a>
           <a href="#">Linkedin</a>
           <a href="#">GitHub</a>
@@ -285,5 +403,31 @@
         © Gabriel Mitsuru. Todos os direitos reservados
       </p>
     </footer>
+
+    <script>
+      const toggleButton = document.getElementById("theme-toggle");
+      const htmlElement = document.documentElement;
+
+      // Aplica o tema salvo no localStorage
+      if (localStorage.getItem("theme") === "dark") {
+        htmlElement.classList.add("dark");
+      }
+
+      toggleButton.addEventListener("click", () => {
+        if (htmlElement.classList.contains("dark")) {
+          htmlElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          htmlElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+      });
+
+      AOS.init({
+        duration: 1000, // Duração da animação em milissegundos
+        easing: "ease-in-out", // Suavização da animação
+        once: true, // A animação ocorre apenas uma vez
+      });
+    </script>
   </body>
 </html>
