@@ -420,10 +420,37 @@
       });
 
       AOS.init({
-        duration: 1000, // Duração da animação em milissegundos
-        easing: "ease-in-out", // Suavização da animação
-        once: true, // A animação ocorre apenas uma vez
+        duration: 1000, 
+        easing: "ease-in-out", 
+        once: true, 
       });
+
+      const linkInicio = document.getElementById("link-inicio");
+      const linkProjetos = document.getElementById("link-projetos");
+      const inicioSection = document.getElementById("inicio");
+      const projetosSection = document.getElementById("projetos");
+
+      function updateLinkColors() {
+        const scrollY = window.scrollY;
+        const inicioTop = inicioSection.offsetTop;
+        const projetosTop = projetosSection.offsetTop;
+        const sectionHeight = window.innerHeight / 2;
+
+        if (scrollY >= inicioTop - sectionHeight && scrollY < projetosTop - sectionHeight) {
+          linkInicio.style.color = "#00CD07";
+          linkProjetos.style.color = ""; 
+        } else if (scrollY >= projetosTop - sectionHeight) {
+          linkProjetos.style.color = "#00CD07";
+          linkInicio.style.color = ""; 
+        } else {
+          linkInicio.style.color = ""; 
+          linkProjetos.style.color = "";
+        }
+      }
+
+      window.addEventListener("load", updateLinkColors);
+      window.addEventListener("scroll", updateLinkColors);
+
     </script>
   </body>
 </html>

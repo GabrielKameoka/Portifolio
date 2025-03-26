@@ -2,16 +2,10 @@ html {
     scroll-behavior: smooth;
   }
   
-  /* Define uma margem para evitar sobreposição */
   section {
     scroll-margin-top: 100px;
   }
   
-  /* Destaca o link quando a seção correspondente estiver visível */
-  :has(#inicio:target) #link-inicio,
-  :has(#projetos:target) #link-projetos {
-    color: #00CD07;
-  }
 
   
 body{
