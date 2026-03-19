@@ -1,21 +1,47 @@
 html {
-    scroll-behavior: smooth;
-  }
-  
-  section {
-    scroll-margin-top: 100px;
-  }
-  
-
-  
-body{
-    font-family: montserrat;
-}  
-
-.titulo,.sobremim, .habilidades{
-    color:#00CD07
+  scroll-behavior: smooth;
 }
 
-#botaolinkedin{
-    border-color: #00CD07;
+section {
+  scroll-margin-top: 100px;
+}
+
+body {
+  font-family: montserrat;
+}
+
+.titulo,
+.sobremim,
+.habilidades {
+  color: #00cd07;
+}
+
+#botaolinkedin {
+  border-color: #00cd07;
+}
+
+
+
+/* FORÇAR ESTILO DAS TAGS DOS PROJETOS */
+#projetos span.bg-\[\#D9D9D9\]{
+  padding: 5px 10px;
+  color: #1f2937 !important; /* gray-800 */
+  background-color: #d9d9d9 !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  display: inline-block !important;
+}
+
+/* Dark mode */
+.dark #projetos span.bg-\[\#D9D9D9\] {
+  background-color: #334155 !important; /* slate-700 */
+  color: #f1f5f9 !important; /* slate-100 - mais claro pro dark */
+}
+
+/* Hover effect */
+#projetos span.bg-\[\#D9D9D9\]:hover {
+  background-color: #00cd07 !important;
+  color: white !important;
+  transition: all 0.2s;
 }
