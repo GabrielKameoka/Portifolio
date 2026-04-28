@@ -86,7 +86,7 @@
     <main>
       <div
         id="inicio"
-        class="min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-6"
+        class="snap-section min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-6"
       >
         <div
           class="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
@@ -139,13 +139,12 @@
                 <p class="flex whitespace-nowrap">Sobre mim</p>
                 <hr class="w-40 sm-80" />
               </div>
-              <p class="max-w-lg text-slate-700 dark:text-slate-200 leading-7">
-                Sou desenvolvedor .NET com foco no uso prático de IA
+              <p class="max-w-lg text-slate-700 dark:text-slate-200 leading-7 select-none cursor-default">
+                Sou desenvolvedor .NET & Angular com foco no uso prático de IA
                 para acelerar desenvolvimento, debugging e operação em nuvem.
                 Tenho experiência com APIs RESTful, autenticação JWT, boas
                 práticas de Clean Code e integração entre .NET, Angular e
-                bancos
-                relacionais.
+                bancos de dados relacionais.
               </p>
             </div>
 
@@ -161,7 +160,7 @@
                 class="tags flex flex-wrap gap-3 justify-center lg:justify-start"
               >
                 <div
-                  class="skill-tag flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+                  class="skill-tag skill-dotnet flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
                 >
                   <img
                     class="w-6"
@@ -172,51 +171,56 @@
                 </div>
 
                 <div
-                  class="skill-tag flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+                  class="skill-tag skill-sqlserver flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
                 >
                   <img
                     class="w-6"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
+                    alt="Ícone SQL Server"
                   />
                   <p>SQL Server</p>
                 </div>
 
                 <div
-                  class="skill-tag flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+                  class="skill-tag skill-postgresql flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
                 >
                   <img
                     class="w-6"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                    alt="Ícone PostgreSQL"
                   />
                   <p>PostgreSQL</p>
                 </div>
 
                 <div
-                  class="skill-tag flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+                  class="skill-tag skill-tailwind flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
                 >
                   <img
                     class="w-6"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                    alt="Ícone Tailwind"
                   />
                   <p>Tailwind</p>
                 </div>
 
                 <div
-                  class="skill-tag flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+                  class="skill-tag skill-angular flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
                 >
                   <img
                     class="w-6"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"
+                    alt="Ícone Angular"
                   />
                   <p>Angular</p>
                 </div>
 
                 <div
-                  class="skill-tag flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
+                  class="skill-tag skill-git flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
                 >
                   <img
                     class="w-6"
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                    alt="Ícone Git"
                   />
                   <p>Git</p>
                 </div>
@@ -228,7 +232,7 @@
 
       <div
         id="projetos"
-        class="mb-24 flex flex-col items-center pt-20 px-4 sm:px-6"
+        class="snap-section mb-24 flex flex-col items-center pt-20 px-4 sm:px-6"
       >
         <div class="flex flex-col gap-6 mb-10">
           <h2 class="titulo text-center text-3xl">PROJETOS</h2>
@@ -392,7 +396,7 @@
 
       <section
         id="experiencia"
-        class="flex flex-col items-center gap-8 pb-24 px-4 sm:px-6"
+        class="snap-section flex flex-col items-center gap-8 pb-24 px-4 sm:px-6"
       >
         <div class="flex flex-col gap-4">
           <h2 class="titulo text-center text-3xl font-medium">
@@ -507,6 +511,124 @@
       const inicioSection = document.getElementById("inicio");
       const projetosSection = document.getElementById("projetos");
       const experienciaSection = document.getElementById("experiencia");
+      const sections = [inicioSection, projetosSection, experienciaSection];
+      let isScrollingBetweenSections = false;
+      let currentSectionIndex = 0;
+      let sectionEdgeArmed = false;
+      let armedSectionIndex = null;
+      let armedDirection = 0;
+      let armTimeoutId = null;
+
+      function getCurrentSectionIndex() {
+        const anchorY = window.scrollY + 120;
+        let currentIndex = 0;
+
+        sections.forEach((section, index) => {
+          if (section.offsetTop <= anchorY) {
+            currentIndex = index;
+          }
+        });
+
+        return currentIndex;
+      }
+
+      function scrollToSection(targetIndex) {
+        if (targetIndex < 0 || targetIndex >= sections.length) return;
+
+        isScrollingBetweenSections = true;
+        currentSectionIndex = targetIndex;
+        sections[targetIndex].scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Evita múltiplos "pulos" enquanto a animação acontece.
+        setTimeout(() => {
+          isScrollingBetweenSections = false;
+        }, 750);
+      }
+
+      function resetEdgeArm() {
+        sectionEdgeArmed = false;
+        armedSectionIndex = null;
+        armedDirection = 0;
+        if (armTimeoutId) {
+          clearTimeout(armTimeoutId);
+          armTimeoutId = null;
+        }
+      }
+
+      function armEdge(sectionIndex, direction) {
+        sectionEdgeArmed = true;
+        armedSectionIndex = sectionIndex;
+        armedDirection = direction;
+        if (armTimeoutId) clearTimeout(armTimeoutId);
+        // Janela curta para o segundo scroll confirmar a intenção.
+        armTimeoutId = setTimeout(() => {
+          resetEdgeArm();
+        }, 900);
+      }
+
+      function canLeaveSection(section, direction) {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        const viewportTop = window.scrollY;
+        const viewportBottom = viewportTop + window.innerHeight;
+        const threshold = 12;
+
+        // Descendo: só muda de seção quando já alcançou o fim visual da seção atual.
+        if (direction > 0) {
+          return viewportBottom >= sectionBottom - threshold;
+        }
+
+        // Subindo: só muda de seção quando já voltou para o topo visual da seção atual.
+        if (direction < 0) {
+          return viewportTop <= sectionTop + threshold;
+        }
+
+        return false;
+      }
+
+      window.addEventListener(
+        "wheel",
+        (event) => {
+          // Mantém o scroll normal em telas touch/smaller.
+          if (window.innerWidth <= 768) return;
+          if (isScrollingBetweenSections) {
+            event.preventDefault();
+            return;
+          }
+
+          const direction = Math.sign(event.deltaY);
+          if (direction === 0) return;
+
+          currentSectionIndex = getCurrentSectionIndex();
+          const activeSection = sections[currentSectionIndex];
+
+          if (!canLeaveSection(activeSection, direction)) {
+            resetEdgeArm();
+            return;
+          }
+
+          // Primeiro scroll no limite: apenas "arma" a troca (a paradinha).
+          // Segundo scroll na mesma direção: efetiva o salto de seção.
+          const isArmedForThisMove =
+            sectionEdgeArmed &&
+            armedSectionIndex === currentSectionIndex &&
+            armedDirection === direction;
+
+          if (!isArmedForThisMove) {
+            armEdge(currentSectionIndex, direction);
+            return;
+          }
+
+          const nextIndex = currentSectionIndex + direction;
+
+          if (nextIndex < 0 || nextIndex >= sections.length) return;
+
+          resetEdgeArm();
+          event.preventDefault();
+          scrollToSection(nextIndex);
+        },
+        { passive: false }
+      );
 
       function updateLinkColors() {
         const scrollY = window.scrollY;

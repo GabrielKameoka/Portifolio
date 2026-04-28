@@ -2,12 +2,28 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 88px;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
 section {
   scroll-margin-top: 100px;
 }
 
 body {
   font-family: montserrat;
+}
+
+@media (max-width: 768px) {
+  body {
+    scroll-snap-type: none;
+  }
 }
 
 .menu-link {
@@ -43,8 +59,29 @@ body {
   border-color: #00cd07;
 }
 
-.skill-tag:hover {
-  background-color: #00cd07;
+.skill-dotnet:hover {
+  background-color: #512bd4;
+}
+
+.skill-sqlserver:hover {
+  background-color: #cc2927;
+}
+
+.skill-postgresql:hover {
+  background-color: #336791;
+}
+
+.skill-tailwind:hover {
+  background-color: #06b6d4;
+  color: #0f172a !important;
+}
+
+.skill-angular:hover {
+  background-color: #dd0031;
+}
+
+.skill-git:hover {
+  background-color: #f05032;
 }
 
 .project-card {
