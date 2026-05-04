@@ -21,11 +21,37 @@
       href="./assets/img/logo__1_-removebg-preview (1).png"
       type="image/x-icon"
     />
-    <title>Gabriel Mitsuru</title>
+    <meta
+      name="description"
+      content="Gabriel Mitsuru - Desenvolvedor Full-Stack .NET & Angular. APIs robustas, escaláveis e com foco em IA. Projetos em produção com JWT, PostgreSQL, Docker."
+    />
+    <meta
+      name="keywords"
+      content=".NET, Angular, Full-Stack, Web Developer, Backend, Frontend, API, C#, TypeScript"
+    />
+    <meta name="author" content="Gabriel Mitsuru" />
+    <meta
+      property="og:title"
+      content="Gabriel Mitsuru - Full-Stack Developer"
+    />
+    <meta
+      property="og:description"
+      content="Desenvolvedor Full-Stack especializado em .NET, Angular e Cloud. Veja meus projetos em produção."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Gabriel Mitsuru - Full-Stack Developer | .NET & Angular</title>
   </head>
+  <!--
+    Onde mexer:
+    · Conteúdo visual: <header>, <main> (hero #inicio, #projetos, <section id="experiencia">), <footer>
+    · Comportamento: src/js/ — theme.js, init-aos.js, section-wheel-scroll.js, nav-scroll-spy.js
+    · Estilos extras: src/assets/css/style.css · Tailwind: input.css → gerar output.css
+  -->
   <body
     class="bg-[#F0F4F9] font-montserrat dark:bg-gray-900 transition scroll-smooth"
   >
+    <!-- ========== Cabeçalho / navegação ========== -->
     <header
       class="fixed w-full top-0 z-50 bg-[#F0F4F9]/70 backdrop-blur-md dark:bg-gray-900/70 transition"
     >
@@ -40,6 +66,7 @@
           <a href="#experiencia" class="menu-link" id="link-experiencia"
             >EXPERIÊNCIA</a
           >
+          <a href="#contato" class="menu-link" id="link-contato">CONTATO</a>
         </nav>
 
         <button
@@ -84,6 +111,7 @@
     </header>
 
     <main>
+      <!-- ========== Hero + sobre + habilidades (#inicio) ========== -->
       <div
         id="inicio"
         class="snap-section min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-6"
@@ -104,9 +132,9 @@
               Desenvolvedor Full-Stack com foco em IA
             </h1>
             <p class="max-w-md text-slate-600 dark:text-slate-300">
-              Engenheiro de Software em formação, construindo APIs
-              robustas, seguras e escaláveis com C#, .NET, arquitetura limpa e
-              interfaces com Angular.
+              Engenheiro de Software em formação, construindo APIs robustas,
+              seguras e escaláveis com .NET, arquitetura limpa, boas práticas
+              de código e interfaces com Angular.
             </p>
             <div
               class="botoes flex justify-center lg:justify-start flex-wrap gap-4"
@@ -139,12 +167,14 @@
                 <p class="flex whitespace-nowrap">Sobre mim</p>
                 <hr class="w-40 sm-80" />
               </div>
-              <p class="max-w-lg text-slate-700 dark:text-slate-200 leading-7 select-none cursor-default">
+              <p
+                class="max-w-lg text-slate-700 dark:text-slate-200 leading-7 select-none cursor-default"
+              >
                 Sou desenvolvedor .NET & Angular com foco no uso prático de IA
                 para acelerar desenvolvimento, debugging e operação em nuvem.
                 Tenho experiência com APIs RESTful, autenticação JWT, boas
-                práticas de Clean Code e integração entre .NET, Angular e
-                bancos de dados relacionais.
+                práticas de Clean Code e integração entre .NET, Angular e bancos
+                de dados relacionais.
               </p>
             </div>
 
@@ -156,73 +186,125 @@
                 <hr class="w-40 sm-80" />
               </div>
 
-              <div
-                class="tags flex flex-wrap gap-3 justify-center lg:justify-start"
-              >
-                <div
-                  class="skill-tag skill-dotnet flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
-                >
-                  <img
-                    class="w-6"
-                    src="./assets/img/dotnet.jpg"
-                    alt="Imagem .NET"
-                  />
-                  <p>.NET</p>
+              <div class="w-full space-y-4 dark:text-slate-300">
+                <!-- .NET -->
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-2">
+                      <img
+                        class="w-6"
+                        src="./assets/img/dotnet.jpg"
+                        alt=".NET"
+                      />
+                      <p class="font-medium">.NET</p>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                      <span class="text-xs font-medium text-[#00CD07]"
+                        >Avançado</span
+                      >
+                      <span class="text-xs text-slate-500 dark:text-slate-400"
+                        >18+ meses</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="w-full bg-gray-300 dark:bg-gray-700 h-2 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="bg-[#512bd4] h-2 rounded-full"
+                      style="width: 85%"
+                    ></div>
+                  </div>
                 </div>
 
-                <div
-                  class="skill-tag skill-sqlserver flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
-                >
-                  <img
-                    class="w-6"
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"
-                    alt="Ícone SQL Server"
-                  />
-                  <p>SQL Server</p>
+                <!-- Angular -->
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-2">
+                      <img
+                        class="w-6"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"
+                        alt="Angular"
+                      />
+                      <p class="font-medium">Angular</p>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                      <span class="text-xs font-medium text-[#00CD07]"
+                        >Intermediário</span
+                      >
+                      <span class="text-xs text-slate-500 dark:text-slate-400"
+                        >12+ meses</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="w-full bg-gray-300 dark:bg-gray-700 h-2 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="bg-[#dd0031] h-2 rounded-full"
+                      style="width: 75%"
+                    ></div>
+                  </div>
                 </div>
 
-                <div
-                  class="skill-tag skill-postgresql flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
-                >
-                  <img
-                    class="w-6"
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
-                    alt="Ícone PostgreSQL"
-                  />
-                  <p>PostgreSQL</p>
+                <!-- Docker -->
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-2">
+                      <img
+                        class="w-6"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" 
+                        alt="Docker"
+                      />
+                      <p class="font-medium">Docker</p>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                      <span class="text-xs font-medium text-[#00CD07]"
+                        >Intermediário</span
+                      >
+                      <span class="text-xs text-slate-500 dark:text-slate-400"
+                        >12+ meses</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="w-full bg-gray-300 dark:bg-gray-700 h-2 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="bg-[#06b6d4] h-2 rounded-full"
+                      style="width: 75%"
+                    ></div>
+                  </div>
                 </div>
 
-                <div
-                  class="skill-tag skill-tailwind flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
-                >
-                  <img
-                    class="w-6"
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                    alt="Ícone Tailwind"
-                  />
-                  <p>Tailwind</p>
-                </div>
-
-                <div
-                  class="skill-tag skill-angular flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
-                >
-                  <img
-                    class="w-6"
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg"
-                    alt="Ícone Angular"
-                  />
-                  <p>Angular</p>
-                </div>
-
-                <div
-                  class="skill-tag skill-git flex gap-1 p-2 pl-2 pr-2 rounded-full bg-white shadow-sm hover:text-white transition dark:shadow-lg dark:text-white dark:bg-slate-800"
-                >
-                  <img
-                    class="w-6"
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
-                    alt="Ícone Git"
-                  />
-                  <p>Git</p>
+                <!-- Git -->
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-2">
+                      <img
+                        class="w-6"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+                        alt="Git"
+                      />
+                      <p class="font-medium">Git</p>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                      <span class="text-xs font-medium text-[#00CD07]"
+                        >Intermediário</span
+                      >
+                      <span class="text-xs text-slate-500 dark:text-slate-400"
+                        >18+ meses</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="w-full bg-gray-300 dark:bg-gray-700 h-2 rounded-full overflow-hidden"
+                  >
+                    <div
+                      class="bg-[#f05032] h-2 rounded-full"
+                      style="width: 90%"
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -230,6 +312,7 @@
         </div>
       </div>
 
+      <!-- ========== Lista de projetos ========== -->
       <div
         id="projetos"
         class="snap-section mb-24 flex flex-col items-center pt-20 px-4 sm:px-6"
@@ -394,6 +477,7 @@
         </div>
       </div>
 
+      <!-- ========== Experiência e formação (timeline) ========== -->
       <section
         id="experiencia"
         class="snap-section flex flex-col items-center gap-8 pb-24 px-4 sm:px-6"
@@ -444,8 +528,54 @@
           </article>
         </div>
       </section>
+
+      <!-- ========== CTA de Contato ========== -->
+      <section
+        id="contato"
+        class="snap-section mb-[300px] flex flex-col items-center pt-20 gap-6 px-4 sm:px-6 dark:text-slate-300"
+      >
+        <div
+          class="max-w-2xl text-center"
+          data-aos="fade-up"
+          data-aos-duration="500"
+        >
+          <h2 class="titulo text-3xl font-medium sm:text-4xl text-white mb-4">
+            Vamos criar algo incrível juntos?
+          </h2>
+          <p class="text-lg mb-8 dark:text-white">
+            Tenho interesse em projetos desafiadores que envolvam arquitetura
+            limpa, APIs escaláveis e boas práticas de código.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+            <a
+              href="mailto:gabrielkameoka@gmail.com"
+              class="flex items-center justify-center gap-2 bg-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 active:scale-95 dark:bg-gray-800 dark:hover:bg-gray-600"
+            >
+              <span>✉️</span>
+              <span>Enviar E-mail</span>
+            </a>
+            <a
+              href="https://wa.me/+5511964449982"
+              target="_blank"
+              class="flex items-center justify-center gap-2 bg-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 active:scale-95 dark:bg-gray-800 dark:hover:bg-gray-600"
+            >
+              <span>💬</span>
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/gabriel-mitsuru/"
+              target="_blank"
+              class="flex items-center justify-center gap-2 bg-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 active:scale-95 dark:bg-gray-800 dark:hover:bg-gray-600"
+            >
+              <span>💼</span>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
 
+    <!-- ========== Rodapé / contato ========== -->
     <footer
       class="flex flex-col gap-12 pt-12 pb-8 bg-black text-white px-4 sm:px-6"
     >
@@ -464,6 +594,7 @@
           <a href="#inicio">Início</a>
           <a href="#projetos">Projetos</a>
           <a href="#experiencia">Experiência</a>
+          <a href="#contato">Contato</a>
         </div>
 
         <div class="flex flex-col">
@@ -480,190 +611,9 @@
       </p>
     </footer>
 
-    <script>
-      const toggleButton = document.getElementById("theme-toggle");
-      const htmlElement = document.documentElement;
-
-      // Aplica o tema salvo no localStorage
-      if (localStorage.getItem("theme") === "dark") {
-        htmlElement.classList.add("dark");
-      }
-
-      toggleButton.addEventListener("click", () => {
-        if (htmlElement.classList.contains("dark")) {
-          htmlElement.classList.remove("dark");
-          localStorage.setItem("theme", "light");
-        } else {
-          htmlElement.classList.add("dark");
-          localStorage.setItem("theme", "dark");
-        }
-      });
-
-      AOS.init({
-        duration: 1000,
-        easing: "ease-in-out",
-        once: true,
-      });
-
-      const linkInicio = document.getElementById("link-inicio");
-      const linkProjetos = document.getElementById("link-projetos");
-      const linkExperiencia = document.getElementById("link-experiencia");
-      const inicioSection = document.getElementById("inicio");
-      const projetosSection = document.getElementById("projetos");
-      const experienciaSection = document.getElementById("experiencia");
-      const sections = [inicioSection, projetosSection, experienciaSection];
-      let isScrollingBetweenSections = false;
-      let currentSectionIndex = 0;
-      let sectionEdgeArmed = false;
-      let armedSectionIndex = null;
-      let armedDirection = 0;
-      let armTimeoutId = null;
-
-      function getCurrentSectionIndex() {
-        const anchorY = window.scrollY + 120;
-        let currentIndex = 0;
-
-        sections.forEach((section, index) => {
-          if (section.offsetTop <= anchorY) {
-            currentIndex = index;
-          }
-        });
-
-        return currentIndex;
-      }
-
-      function scrollToSection(targetIndex) {
-        if (targetIndex < 0 || targetIndex >= sections.length) return;
-
-        isScrollingBetweenSections = true;
-        currentSectionIndex = targetIndex;
-        sections[targetIndex].scrollIntoView({ behavior: "smooth", block: "start" });
-
-        // Evita múltiplos "pulos" enquanto a animação acontece.
-        setTimeout(() => {
-          isScrollingBetweenSections = false;
-        }, 750);
-      }
-
-      function resetEdgeArm() {
-        sectionEdgeArmed = false;
-        armedSectionIndex = null;
-        armedDirection = 0;
-        if (armTimeoutId) {
-          clearTimeout(armTimeoutId);
-          armTimeoutId = null;
-        }
-      }
-
-      function armEdge(sectionIndex, direction) {
-        sectionEdgeArmed = true;
-        armedSectionIndex = sectionIndex;
-        armedDirection = direction;
-        if (armTimeoutId) clearTimeout(armTimeoutId);
-        // Janela curta para o segundo scroll confirmar a intenção.
-        armTimeoutId = setTimeout(() => {
-          resetEdgeArm();
-        }, 900);
-      }
-
-      function canLeaveSection(section, direction) {
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
-        const viewportTop = window.scrollY;
-        const viewportBottom = viewportTop + window.innerHeight;
-        const threshold = 12;
-
-        // Descendo: só muda de seção quando já alcançou o fim visual da seção atual.
-        if (direction > 0) {
-          return viewportBottom >= sectionBottom - threshold;
-        }
-
-        // Subindo: só muda de seção quando já voltou para o topo visual da seção atual.
-        if (direction < 0) {
-          return viewportTop <= sectionTop + threshold;
-        }
-
-        return false;
-      }
-
-      window.addEventListener(
-        "wheel",
-        (event) => {
-          // Mantém o scroll normal em telas touch/smaller.
-          if (window.innerWidth <= 768) return;
-          if (isScrollingBetweenSections) {
-            event.preventDefault();
-            return;
-          }
-
-          const direction = Math.sign(event.deltaY);
-          if (direction === 0) return;
-
-          currentSectionIndex = getCurrentSectionIndex();
-          const activeSection = sections[currentSectionIndex];
-
-          if (!canLeaveSection(activeSection, direction)) {
-            resetEdgeArm();
-            return;
-          }
-
-          // Primeiro scroll no limite: apenas "arma" a troca (a paradinha).
-          // Segundo scroll na mesma direção: efetiva o salto de seção.
-          const isArmedForThisMove =
-            sectionEdgeArmed &&
-            armedSectionIndex === currentSectionIndex &&
-            armedDirection === direction;
-
-          if (!isArmedForThisMove) {
-            armEdge(currentSectionIndex, direction);
-            return;
-          }
-
-          const nextIndex = currentSectionIndex + direction;
-
-          if (nextIndex < 0 || nextIndex >= sections.length) return;
-
-          resetEdgeArm();
-          event.preventDefault();
-          scrollToSection(nextIndex);
-        },
-        { passive: false }
-      );
-
-      function updateLinkColors() {
-        const scrollY = window.scrollY;
-        const inicioTop = inicioSection.offsetTop;
-        const projetosTop = projetosSection.offsetTop;
-        const experienciaTop = experienciaSection.offsetTop;
-        const sectionHeight = window.innerHeight / 2;
-
-        if (
-          scrollY >= inicioTop - sectionHeight &&
-          scrollY < projetosTop - sectionHeight
-        ) {
-          linkInicio.style.color = "#00CD07";
-          linkProjetos.style.color = "";
-          linkExperiencia.style.color = "";
-        } else if (
-          scrollY >= projetosTop - sectionHeight &&
-          scrollY < experienciaTop - sectionHeight
-        ) {
-          linkProjetos.style.color = "#00CD07";
-          linkInicio.style.color = "";
-          linkExperiencia.style.color = "";
-        } else if (scrollY >= experienciaTop - sectionHeight) {
-          linkExperiencia.style.color = "#00CD07";
-          linkProjetos.style.color = "";
-          linkInicio.style.color = "";
-        } else {
-          linkInicio.style.color = "";
-          linkProjetos.style.color = "";
-          linkExperiencia.style.color = "";
-        }
-      }
-
-      window.addEventListener("load", updateLinkColors);
-      window.addEventListener("scroll", updateLinkColors);
-    </script>
+    <script src="./js/theme.js" defer></script>
+    <script src="./js/init-aos.js" defer></script>
+    <script src="./js/section-wheel-scroll.js" defer></script>
+    <script src="./js/nav-scroll-spy.js" defer></script>
   </body>
 </html>
