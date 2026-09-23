@@ -1,43 +1,53 @@
-# Portfólio de Gabriel Mitsuru
+# Gabriel Mitsuru — Portfólio
 
-Este é o meu portfólio pessoal, desenvolvido com Tailwind CSS. Ele apresenta meus projetos, habilidades e informações de contato.
+Portfólio de um desenvolvedor backend com visão full-stack. A página principal apresenta projetos, competências aplicadas, experiência freelancer, formação e contato. SinalVortex e RepCortex têm estudos de caso próprios, com decisões técnicas e limites explícitos.
 
-## Sobre Mim
+## Desenvolvimento
 
-Sou um Desenvolvedor .NET Full Stack apaixonado por tecnologia e inovação. Com experiência no ecossistema .NET, desenvolvo aplicações combinando C#, ASP.NET Core, Entity Framework, SQL Server e Front-end com Tailwind.
+Requer Node.js 20.19+ e npm.
 
-## Projetos
+```sh
+npm ci
+npm run dev
+```
 
-### Indies
+O servidor informa a URL local (normalmente `http://127.0.0.1:5173`). O comando observa o CSS do Tailwind e os arquivos do site.
 
-* **Descrição**: Neste projeto, desenvolvido em ASP.NET MVC, você pode criar o seu usuário e cadastrar músicas não muito conhecidas. Durante o desenvolvimento, foi fundamentalmente aprendido manipulação de entidades do banco de dados, o principal desafio do projeto.
-* **Tecnologias**: ASP.NET, SQL Server, Bootstrap
-* **Link do GitHub**: [https://github.com/GabrielKameoka/Indies](https://github.com/GabrielKameoka/Indies)
+```sh
+npm run build
+npm run preview
+```
 
-### Aprenda+
+A compilação gera `dist/`, pronto para hospedagem estática. As páginas internas usam URLs relativas e não dependem de fallback de SPA. Nenhum deploy faz parte desta alteração.
 
-* **Descrição**: Este projeto foi feito em grupo no curso de Desenvolvimento Web pelo Instituto da Oportunidade Social. Desafios como soft-skills foram desenvolvidas durante o projeto, sendo ela o maior desafio do projeto.
-* **Tecnologias**: HTML, CSS, JavaScript, GitHub
-* **Link do GitHub**: [https://github.com/andreluiswebdev/AprendaMais](https://github.com/andreluiswebdev/AprendaMais)
+## Estrutura e manutenção
 
-### CRUD Livros
+- `src/index.html`: apresentação, projetos, trajetória e contatos.
+- `src/projetos/`: estudos de caso estáticos de SinalVortex e RepCortex.
+- `src/assets/css/style.css`: identidade visual, responsividade e temas.
+- `src/assets/fonts/`: Bricolage Grotesque e Source Sans 3, locais, com licenças OFL; elementos de código usam a fonte monoespaçada do sistema.
+- `src/js/`: preferência de tema e indicação da seção atual.
+- `src/input.css`: entrada do Tailwind CSS 4; `src/output.css` é gerado.
 
-* **Descrição**: Afim de aprimorar os meus conhecimentos em ASP.NET, este projeto foi desenvolvido no editor Rider, que até então, nunca foi usado por mim. O aplicativo foi finalizado com sucesso sem muitos desafios, porém, com uma grande gama de conhecimentos.
-* **Tecnologias**: ASP.NET, SQL Server, Bootstrap
-* **Link do GitHub**: [https://github.com/GabrielKameoka/Indies](https://github.com/GabrielKameoka/Indies)
+HTML, Tailwind CSS 4 e JavaScript, com Vite para desenvolvimento e empacotamento. O conteúdo, os links e os diagramas permanecem acessíveis sem JavaScript. O tema escuro em carvão e verde-sálvia é o padrão; a escolha manual de tema fica salva. Não há rastreamento, formulário ou serviço de backend. O diagrama da abertura permite simular entrega e falha inteiramente no navegador. As animações respeitam a preferência por movimento reduzido; a navegação continua com rolagem nativa.
 
-## Habilidades
+Ao editar projetos, confira a implementação antes de afirmar que uma funcionalidade está pronta. Não publique métricas, disponibilidade ou depoimentos sem evidências. Os diagramas são identificados como tal e não simulam capturas do produto. Os links de código permanecem públicos; Pet’s Fran é apresentado apenas pelo contexto profissional, sem código privado.
 
-* .NET
-* HTML
-* CSS
-* SQL Server
-* Tailwind CSS
-* Bootstrap
-* Git
+Na publicação futura, configure `og:url`, URL canônica e o endereço absoluto de `og:image` com o domínio real. A imagem local de compartilhamento já está incluída; não há um domínio presumido no código.
 
-## Contato
+## Validação
 
-* LinkedIn: [https://www.linkedin.com/in/gabriel-mitsuru/](https://www.linkedin.com/in/gabriel-mitsuru/)
-* GitHub: [https://github.com/GabrielKameoka](https://github.com/GabrielKameoka)
-* Instagram: [https://www.instagram.com/mitsuru.cs/](https://www.instagram.com/mitsuru.cs/)
+```sh
+npx playwright install chromium
+npm run test:e2e
+```
+
+Os testes iniciam uma prévia da compilação e verificam as três páginas em 390, 768 e 1440 pixels, nos dois temas, além de navegação, persistência do tema, ausência de overflow, recursos locais, erros de console, teclado, movimento reduzido e conteúdo sem JavaScript. Capturas da validação ficam em `test-results/` (não versionadas).
+
+## Projetos e contato
+
+- [SinalVortex](https://github.com/GabrielKameoka/SinalVortex): notificações assíncronas com API, Redis, Worker, PostgreSQL e sandbox Mailpit.
+- [RepCortex](https://github.com/GabrielKameoka/RepCortex): avaliações, moderação e classificação léxica de sentimentos.
+- Pet’s Fran: experiência freelancer com .NET, Angular e PostgreSQL; código privado.
+- [Aprenda+](https://github.com/andreluiswebdev/AprendaMais): projeto educacional desenvolvido em equipe no IOS.
+- [LinkedIn](https://www.linkedin.com/in/gabriel-mitsuru/) · [GitHub](https://github.com/GabrielKameoka) · [E-mail](mailto:gabrielkameoka@gmail.com) · [WhatsApp](https://wa.me/5511964449982)

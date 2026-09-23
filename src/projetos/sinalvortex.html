@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SinalVortex | Estudo de caso — Gabriel Mitsuru</title>
+    <meta
+      name="description"
+      content="Plataforma de notificações assíncronas para estudar processamento separado, persistência e tratamento de falhas em um fluxo reproduzível localmente."
+    />
+    <meta name="author" content="Gabriel Mitsuru" />
+    <meta
+      property="og:title"
+      content="SinalVortex | Estudo de caso — Gabriel Mitsuru"
+    />
+    <meta
+      property="og:description"
+      content="Plataforma de notificações assíncronas para estudar processamento separado, persistência e tratamento de falhas em um fluxo reproduzível localmente."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image" content="../assets/img/social-preview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../output.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a
+          class="wordmark"
+          href="../index.html"
+          aria-label="Gabriel Mitsuru, início"
+          >gm<span>_</span></a
+        >
+        <nav aria-label="Navegação principal">
+          <a href="../index.html#projetos">Projetos</a
+          ><a href="../index.html#sobre">Sobre</a
+          ><a href="../index.html#contato">Contato</a>
+        </nav>
+        <button
+          class="theme-toggle"
+          type="button"
+          hidden
+          aria-label="Ativar tema escuro"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="8" />
+            <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" /></svg
+          ><span class="theme-label">Tema</span>
+        </button>
+      </div>
+    </header>
+    <main id="conteudo">
+      <section class="case-hero shell" id="inicio">
+        <a class="back-link" href="../index.html#projetos"
+          >← Todos os projetos</a
+        >
+        <p class="project-context">Estudo de caso / Backend distribuído</p>
+        <h1>SinalVortex<span class="name-period">.</span></h1>
+        <p class="case-subtitle">
+          O trabalho continua depois da resposta da API.
+        </p>
+        <p class="case-intro">
+          Plataforma de notificações assíncronas para estudar processamento
+          separado, persistência e tratamento de falhas em um fluxo reproduzível
+          localmente.
+        </p>
+        <div class="case-actions">
+          <a
+            class="button"
+            href="https://github.com/GabrielKameoka/SinalVortex"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Ver código no GitHub<span class="external" aria-hidden="true"
+              >↗</span
+            ></a
+          ><a
+            class="text-link"
+            href="https://github.com/GabrielKameoka/SinalVortex#readme"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Ler documentação<span class="external" aria-hidden="true"
+              >↗</span
+            ></a
+          >
+        </div>
+      </section>
+      <div class="shell case-layout">
+        <aside class="case-index">
+          <nav aria-label="Neste estudo de caso">
+            <p>Neste projeto</p>
+            <a href="#contexto">O problema</a
+            ><a href="#participacao">Minha participação</a
+            ><a href="#funcionamento">Como funciona</a
+            ><a href="#decisoes">Decisões de engenharia</a
+            ><a href="#demonstracao">Como explorar</a
+            ><a href="#limites">Limites atuais</a
+            ><a href="#aprendizados">O que esse projeto me ensina</a>
+          </nav>
+        </aside>
+        <div class="case-content">
+          <figure class="system-figure">
+            <div class="figure-top">
+              <span>SinalVortex</span><span>Diagrama de arquitetura</span>
+            </div>
+            <div class="system-diagram">
+              <div class="system-node api">
+                <small>Receber</small><strong>API .NET</strong
+                ><span>Valida e registra</span>
+              </div>
+              <div class="flow-connector" aria-hidden="true">↓</div>
+              <div class="system-branch">
+                <div class="system-node">
+                  <small>Persistir</small><strong>PostgreSQL</strong
+                  ><span>Estado e histórico</span>
+                </div>
+                <div class="system-node">
+                  <small>Enfileirar</small><strong>Redis</strong
+                  ><span>Filas por prioridade</span>
+                </div>
+              </div>
+              <div class="flow-connector right-connector" aria-hidden="true">
+                ↓
+              </div>
+              <div class="system-node worker">
+                <small>Processar</small><strong>Worker</strong
+                ><span>Entrega, retry e DLQ</span>
+              </div>
+              <div class="flow-connector" aria-hidden="true">↓</div>
+              <div class="delivery">
+                <span class="delivery-dot" aria-hidden="true"></span
+                ><strong>Mailpit</strong
+                ><span>E-mail capturado localmente</span>
+              </div>
+            </div>
+            <figcaption>
+              Receber agora. Processar fora da requisição.
+            </figcaption>
+          </figure>
+          <section id="contexto" class="case-section">
+            <h2>O problema</h2>
+            <p>
+              Enviar uma notificação envolve mais do que aceitar uma requisição.
+              O provedor pode falhar, o processamento pode levar tempo e o
+              usuário precisa saber o que aconteceu com a mensagem.
+            </p>
+            <p>
+              Construí o SinalVortex para explorar essa fronteira: a API
+              registra a solicitação e o Worker assume o processamento fora do
+              ciclo HTTP.
+            </p>
+          </section>
+          <section id="participacao" class="case-section">
+            <h2>Minha participação</h2>
+            <p>
+              No projeto autoral, trabalhei na integração entre API .NET,
+              interface Angular, persistência PostgreSQL e processamento com
+              Redis e Worker. A demonstração local conecta essas partes com
+              Docker Compose e Mailpit.
+            </p>
+            <p>
+              O foco foi tornar o caminho da mensagem investigável: do registro
+              inicial ao estado de entrega ou falha.
+            </p>
+          </section>
+          <section id="funcionamento" class="case-section">
+            <h2>Como funciona</h2>
+            <ol class="case-steps">
+              <li>
+                <strong>Receber e registrar.</strong> A interface Angular envia
+                a notificação à API, que persiste seu estado no PostgreSQL e
+                publica o item na fila Redis.
+              </li>
+              <li>
+                <strong>Processar fora da API.</strong> O Worker consome a fila
+                e executa a entrega. Retry e DLQ tratam os caminhos de falha
+                conforme o tipo de erro.
+              </li>
+              <li>
+                <strong>Acompanhar.</strong> A interface consulta o estado, e o
+                monitor recebe eventos via SignalR.
+              </li>
+              <li>
+                <strong>Conferir a entrega local.</strong> O Mailpit captura o
+                e-mail enviado pelo SMTP sandbox, sem encaminhá-lo a
+                destinatários reais.
+              </li>
+            </ol>
+          </section>
+          <section id="decisoes" class="case-section">
+            <h2>Decisões de engenharia</h2>
+            <div class="decision">
+              <h3>API e Worker separados</h3>
+              <p>
+                O envio não precisa terminar para encerrar a requisição HTTP. A
+                separação permite estudar os ciclos de vida de recepção e
+                processamento, ao custo de lidar com comunicação entre
+                processos.
+              </p>
+            </div>
+            <div class="decision">
+              <h3>Estado persistido e fila com responsabilidades distintas</h3>
+              <p>
+                O PostgreSQL mantém notificações e histórico; o Redis organiza o
+                trabalho a consumir. Essa divisão exige atenção à consistência
+                entre persistir e enfileirar.
+              </p>
+            </div>
+            <div class="decision">
+              <h3>Falhas visíveis</h3>
+              <p>
+                A DLQ preserva mensagens que não puderam ser processadas. Junto
+                do monitor, ajuda a investigar o motivo de uma falha em vez de
+                tratá-la como um erro genérico.
+              </p>
+            </div>
+            <div class="decision">
+              <h3>Infraestrutura local para demonstrar e testar</h3>
+              <p>
+                Docker Compose reúne os serviços da demo. Testes de integração
+                usam Testcontainers, permitindo exercitar dependências reais em
+                ambientes isolados.
+              </p>
+            </div>
+          </section>
+          <section id="demonstracao" class="case-section">
+            <h2>Como explorar</h2>
+            <p>No repositório, com Docker e Compose disponíveis, execute:</p>
+            <pre
+              tabindex="0"
+              role="region"
+              aria-label="Comando para iniciar a demonstração"
+            ><code>docker compose -f docker-compose.local.yml up --build</code></pre>
+            <p>
+              Abra a interface na porta 4200, crie uma conta e envie uma
+              notificação por e-mail. Acompanhe o Inbox e o monitor; confira a
+              mensagem capturada no Mailpit, na porta 8025.
+            </p>
+            <p>
+              O roteiro no repositório também descreve cenários de falha e
+              verificações de persistência.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/GabrielKameoka/SinalVortex/blob/develop/docs/local-demo.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Consultar roteiro no repositório<span
+                class="external"
+                aria-hidden="true"
+                >↗</span
+              ></a
+            >
+          </section>
+          <section id="limites" class="case-section">
+            <h2>Limites atuais</h2>
+            <div class="scope-note">
+              <p>
+                <strong>Esta é uma demonstração local.</strong> Aceitação pelo
+                SMTP significa captura no Mailpit, não entrega de e-mail
+                externo.
+              </p>
+              <p>
+                SMS, WhatsApp e Push não têm provedores implementados e
+                demonstram falha/DLQ. Templates, CRM, webhooks inbound e deploy
+                de produção não são apresentados como funcionalidades prontas.
+              </p>
+            </div>
+            <p>
+              O projeto não apresenta benchmarks de escala nem garantia de
+              entrega exatamente uma vez. Esses pontos exigiriam validação e
+              decisões adicionais.
+            </p>
+          </section>
+          <section id="aprendizados" class="case-section">
+            <h2>O que esse projeto me ensina</h2>
+            <p>
+              Separar serviços desloca parte da complexidade para as fronteiras
+              entre eles. Persistir, enfileirar, repetir e observar precisam ser
+              pensados em conjunto.
+            </p>
+            <p>
+              Uma demo útil também precisa ser reproduzível. Explicar como
+              iniciar o ambiente e provocar uma falha faz parte da entrega,
+              tanto quanto mostrar o caminho que funciona.
+            </p>
+          </section>
+          <div class="case-next">
+            <p>Continue explorando</p>
+            <a href="./repcortex.html"
+              >RepCortex <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </div>
+      <section class="case-contact shell">
+        <h2>Quer conversar sobre as escolhas?</h2>
+        <a class="text-link" href="mailto:gabrielkameoka@gmail.com"
+          >Me escreva <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <footer class="site-footer shell">
+      <a class="wordmark" href="../index.html">gm<span>_</span></a>
+      <p>Gabriel Mitsuru <span>Feito com atenção aos detalhes.</span></p>
+      <a href="#inicio">Voltar ao topo ↑</a>
+    </footer>
+    <script src="../js/nav-scroll-spy.js" type="module"></script>
+    <script src="../js/interactions.js" type="module"></script>
+  </body>
+</html>

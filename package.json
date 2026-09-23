@@ -1,11 +1,25 @@
 {
-  "dependencies": {
-    "@fontsource/montserrat": "^5.2.5",
-    "@tailwindcss/cli": "^4.0.15",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3"
-  },
   "devDependencies": {
-    "tailwindcss": "^4.2.1"
+    "@axe-core/playwright": "^4.13.0",
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/source-sans-3": "^5.3.0",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/cli": "^4.3.3",
+    "prettier": "^3.9.8",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0"
+  },
+  "name": "gabriel-mitsuru-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "npm run css && node scripts/dev.mjs",
+    "css": "tailwindcss -i src/input.css -o src/output.css --minify",
+    "build": "npm run css && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test:e2e": "npm run build && playwright test"
   }
 }
