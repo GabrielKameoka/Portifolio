@@ -10,7 +10,7 @@ export default defineConfig({
         order: "pre",
         handler(html) {
           return html.replace(
-            /<script src="(?:\.\/|\.\.\/)js\/theme\.js"><\/script>/,
+            /<script src="(?:\.\.\/){0,2}(?:\.\/)?js\/theme\.js"><\/script>/,
             () => `<script>${readFileSync("src/js/theme.js", "utf8")}</script>`,
           );
         },
@@ -28,6 +28,9 @@ export default defineConfig({
         index: resolve("src/index.html"),
         sinalvortex: resolve("src/projetos/sinalvortex.html"),
         repcortex: resolve("src/projetos/repcortex.html"),
+        enIndex: resolve("src/en/index.html"),
+        enSinalvortex: resolve("src/en/projetos/sinalvortex.html"),
+        enRepcortex: resolve("src/en/projetos/repcortex.html"),
       },
     },
   },

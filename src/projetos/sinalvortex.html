@@ -41,6 +41,21 @@
           ><a href="../index.html#sobre">Sobre</a
           ><a href="../index.html#contato">Contato</a>
         </nav>
+        <div class="language-switch" role="group" aria-label="Idioma">
+          <a
+            href="./sinalvortex.html"
+            lang="pt-BR"
+            aria-current="page"
+            aria-label="Português"
+            >PT</a
+          >
+          <a
+            href="../en/projetos/sinalvortex.html"
+            lang="en"
+            aria-label="English"
+            >EN</a
+          >
+        </div>
         <button
           class="theme-toggle"
           type="button"
@@ -109,42 +124,139 @@
           </nav>
         </aside>
         <div class="case-content">
-          <figure class="system-figure">
+          <div class="case-interaction-intro">
+            <h2>Escolha o caminho da mensagem.</h2>
+            <p>
+              Veja o envio chegar ao Mailpit ou acompanhe uma falha até a DLQ.
+              Depois, abra o trecho real do handler.
+            </p>
+            <button
+              class="motion-toggle"
+              type="button"
+              hidden
+              aria-pressed="false"
+            >
+              Ⅱ Pausar animações
+            </button>
+          </div>
+          <figure class="system-figure interactive-system">
             <div class="figure-top">
-              <span>SinalVortex</span><span>Diagrama de arquitetura</span>
+              <span
+                ><span class="workspace-led" aria-hidden="true"></span
+                >sinalvortex</span
+              ><span>workspace / explorável</span>
             </div>
-            <div class="system-diagram">
-              <div class="system-node api">
-                <small>Receber</small><strong>API .NET</strong
-                ><span>Valida e registra</span>
-              </div>
-              <div class="flow-connector" aria-hidden="true">↓</div>
-              <div class="system-branch">
-                <div class="system-node">
-                  <small>Persistir</small><strong>PostgreSQL</strong
-                  ><span>Estado e histórico</span>
+            <div
+              class="workspace-tabs"
+              role="tablist"
+              aria-label="Explorar SinalVortex"
+              hidden
+            >
+              <button
+                role="tab"
+                id="flow-tab"
+                aria-controls="flow-panel"
+                aria-selected="true"
+                tabindex="0"
+              >
+                Fluxo da mensagem
+              </button>
+              <button
+                role="tab"
+                id="code-tab"
+                aria-controls="code-panel"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                Código-fonte
+              </button>
+            </div>
+            <div id="flow-panel" role="tabpanel" aria-labelledby="flow-tab">
+              <div class="system-diagram">
+                <div class="system-node api" data-flow="api">
+                  <small>Receber</small><strong>API .NET</strong
+                  ><span>Valida e registra</span>
                 </div>
-                <div class="system-node">
-                  <small>Enfileirar</small><strong>Redis</strong
-                  ><span>Filas por prioridade</span>
+                <div class="flow-connector" aria-hidden="true">↓</div>
+                <div class="system-branch">
+                  <div class="system-node" data-flow="database">
+                    <small>Persistir</small><strong>PostgreSQL</strong
+                    ><span>Estado e histórico</span>
+                  </div>
+                  <div class="system-node" data-flow="queue">
+                    <small>Enfileirar</small><strong>Redis</strong
+                    ><span>Filas por prioridade</span>
+                  </div>
+                </div>
+                <div class="flow-connector right-connector" aria-hidden="true">
+                  ↓
+                </div>
+                <div class="system-node worker" data-flow="worker">
+                  <small>Processar</small><strong>Worker</strong
+                  ><span>Entrega, retry e DLQ</span>
+                </div>
+                <div class="flow-connector" aria-hidden="true">↓</div>
+                <div class="delivery" data-flow="delivery">
+                  <span class="delivery-dot" aria-hidden="true"></span
+                  ><strong>Mailpit</strong
+                  ><span>E-mail capturado localmente</span>
                 </div>
               </div>
-              <div class="flow-connector right-connector" aria-hidden="true">
-                ↓
+              <div class="flow-controls" hidden>
+                <div class="flow-buttons">
+                  <button type="button" data-simulate="success">
+                    Enviar mensagem <span aria-hidden="true">↗</span></button
+                  ><button type="button" data-simulate="failure">
+                    E se falhar?
+                  </button>
+                </div>
+                <p class="flow-status" role="status" aria-live="polite">
+                  Escolha um caminho e acompanhe a mensagem.
+                </p>
               </div>
-              <div class="system-node worker">
-                <small>Processar</small><strong>Worker</strong
-                ><span>Entrega, retry e DLQ</span>
-              </div>
-              <div class="flow-connector" aria-hidden="true">↓</div>
-              <div class="delivery">
-                <span class="delivery-dot" aria-hidden="true"></span
-                ><strong>Mailpit</strong
-                ><span>E-mail capturado localmente</span>
-              </div>
+            </div>
+            <div
+              id="code-panel"
+              role="tabpanel"
+              aria-labelledby="code-tab"
+              hidden
+            >
+              <p class="code-filename">CriarNotificacaoHandler.cs</p>
+              <pre
+                class="source-code"
+                tabindex="0"
+                role="region"
+                aria-label="Trechos reais do handler de notificações"
+              ><code><span class="code-comment">// Persistir o estado antes de enfileirar</span>
+<span class="code-keyword">await</span> _notificacaoRepository
+    .<span class="code-method">AdicionarAsync</span>(
+        notificacao, cancellationToken);
+
+<span class="code-comment">// … criação do payload da fila …</span>
+
+<span class="code-keyword">await</span> _cacheService
+    .<span class="code-method">EnqueueAsync</span>(filaKey, payloadFila);
+
+<span class="code-keyword">return new</span> <span class="code-type">CriarNotificacaoResultDto</span>(
+    notificacao.Id,
+    notificacao.Status,
+    notificacao.CriadoEm
+);</code></pre>
+              <p class="code-note">
+                Trechos do projeto, com a montagem do payload omitida. Persistir
+                e enfileirar são operações separadas — a consistência entre elas
+                é uma preocupação do sistema.
+              </p>
+              <a
+                class="code-source"
+                href="https://github.com/GabrielKameoka/SinalVortex/blob/develop/backend/SinalVortex.Application/Commands/Notificacoes/CriarNotificacaoHandler.cs"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Abrir arquivo completo ↗</a
+              >
             </div>
             <figcaption>
-              Receber agora. Processar fora da requisição.
+              Simulação visual no navegador. Nenhuma mensagem real é enviada.
             </figcaption>
           </figure>
           <section id="contexto" class="case-section">

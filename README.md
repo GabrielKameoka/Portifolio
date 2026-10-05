@@ -24,12 +24,13 @@ A compilação gera `dist/`, pronto para hospedagem estática. As páginas inter
 
 - `src/index.html`: apresentação, projetos, trajetória e contatos.
 - `src/projetos/`: estudos de caso estáticos de SinalVortex e RepCortex.
+- `src/en/`: versões em inglês da home e dos dois estudos de caso. Ao alterar conteúdo, atualize a página correspondente nos dois idiomas.
 - `src/assets/css/style.css`: identidade visual, responsividade e temas.
 - `src/assets/fonts/`: Bricolage Grotesque e Source Sans 3, locais, com licenças OFL; elementos de código usam a fonte monoespaçada do sistema.
 - `src/js/`: preferência de tema e indicação da seção atual.
 - `src/input.css`: entrada do Tailwind CSS 4; `src/output.css` é gerado.
 
-HTML, Tailwind CSS 4 e JavaScript, com Vite para desenvolvimento e empacotamento. O conteúdo, os links e os diagramas permanecem acessíveis sem JavaScript. O tema escuro em carvão e verde-sálvia é o padrão; a escolha manual de tema fica salva. Não há rastreamento, formulário ou serviço de backend. O diagrama da abertura permite simular entrega e falha inteiramente no navegador. As animações respeitam a preferência por movimento reduzido; a navegação continua com rolagem nativa.
+HTML, Tailwind CSS 4 e JavaScript, com Vite para desenvolvimento e empacotamento. O conteúdo, os links e os diagramas permanecem acessíveis sem JavaScript. O seletor PT/EN no cabeçalho abre a página equivalente, e os controles interativos usam o idioma da página. O tema escuro em carvão e verde-sálvia é o padrão; a escolha manual de tema fica salva. Não há rastreamento, formulário ou serviço de backend. O diagrama do SinalVortex permite simular entrega e falha inteiramente no navegador. As animações respeitam a preferência por movimento reduzido; a navegação continua com rolagem nativa.
 
 Ao editar projetos, confira a implementação antes de afirmar que uma funcionalidade está pronta. Não publique métricas, disponibilidade ou depoimentos sem evidências. Os diagramas são identificados como tal e não simulam capturas do produto. Os links de código permanecem públicos; Pet’s Fran é apresentado apenas pelo contexto profissional, sem código privado.
 
@@ -42,7 +43,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Os testes iniciam uma prévia da compilação e verificam as três páginas em 390, 768 e 1440 pixels, nos dois temas, além de navegação, persistência do tema, ausência de overflow, recursos locais, erros de console, teclado, movimento reduzido e conteúdo sem JavaScript. Capturas da validação ficam em `test-results/` (não versionadas).
+Os testes iniciam uma prévia da compilação e verificam as seis páginas em 390, 768 e 1440 pixels, nos dois temas, além da troca de idioma, navegação, persistência do tema, ausência de overflow, recursos locais, erros de console, teclado, movimento reduzido e conteúdo sem JavaScript. Capturas da validação ficam em `test-results/` (não versionadas).
 
 ## Projetos e contato
 

@@ -134,6 +134,9 @@ button[hidden] {
   z-index: 20;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
+  nav a{
+    text-decoration: none;
+  }
 }
 .header-inner {
   height: 88px;
@@ -600,9 +603,6 @@ h2 {
   font-size: 16px;
   color: var(--muted);
 }
-.experience {
-  padding-top: 0;
-}
 .experience h2 {
   margin-bottom: 45px;
 }
@@ -1015,9 +1015,6 @@ pre {
     max-width: 100%;
     font-size: 40px;
   }
-  .experience {
-    padding-top: 0;
-  }
   .case-layout {
     display: block;
   }
@@ -1225,9 +1222,6 @@ pre {
   }
   .skill-stack {
     margin-block: 9px;
-  }
-  .experience {
-    padding-top: 0;
   }
   .experience h2 {
     margin-bottom: 30px;
@@ -2091,9 +2085,6 @@ h2 {
 .skill-stack {
   font-size: 10px;
 }
-.experience {
-  padding-top: 0;
-}
 .experience-date {
   font-size: 11px;
 }
@@ -2239,8 +2230,7 @@ body.motion-paused .interactive-system {
   .section {
     padding-block: 64px;
   }
-  .dev-notes,
-  .experience {
+  .dev-notes {
     padding-top: 0;
   }
 }
@@ -2332,8 +2322,7 @@ body.motion-paused .interactive-system {
   .section {
     padding-block: 50px;
   }
-  .dev-notes,
-  .experience {
+  .dev-notes {
     padding-top: 0;
   }
   .section-heading h2 {
@@ -2415,5 +2404,251 @@ body.motion-paused .interactive-system {
   }
   .availability {
     font-size: 10px;
+  }
+}
+
+/* A quiet entrance, with the detailed workspace on the SinalVortex page. */
+.hero {
+  display: block;
+  min-height: 0;
+  padding-block: clamp(80px, 12vw, 150px) clamp(80px, 10vw, 120px);
+}
+.hero::before {
+  inset: 6% 0 0 55%;
+  opacity: 0.18;
+}
+.hero-copy {
+  max-width: 780px;
+}
+.hero h1 {
+  font-size: clamp(76px, 10vw, 144px);
+}
+.hero-description {
+  max-width: 670px;
+  font-size: clamp(23px, 3vw, 35px);
+}
+.hero-detail {
+  max-width: 530px;
+}
+.project-choices {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.project-choices[hidden],
+.project-spotlight[hidden] {
+  display: none;
+}
+.project-choices button {
+  min-height: 48px;
+  padding: 9px 17px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--muted);
+  font: 13px var(--mono);
+  transition:
+    background 180ms,
+    color 180ms,
+    border-color 180ms;
+}
+.project-choices button:hover,
+.project-choices button[aria-selected="true"] {
+  color: var(--ink);
+  background: var(--tint);
+  border-color: var(--accent);
+}
+.project-spotlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 0.9fr);
+  align-items: center;
+  gap: clamp(28px, 6vw, 80px);
+  min-height: 350px;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.project-spotlight + .project-spotlight {
+  margin-top: 16px;
+}
+.project-spotlight-copy h3 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  margin: 12px 0 15px;
+}
+.project-spotlight-copy > p:not(.project-context) {
+  max-width: 440px;
+  color: var(--muted);
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.4;
+  margin-bottom: 30px;
+}
+.project-spotlight-art {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 35px 18px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transform: rotate(1deg);
+}
+.project-spotlight-art span {
+  padding: 10px 13px;
+  border: 1px solid var(--accent);
+  font: 13px var(--mono);
+  color: var(--ink);
+}
+.project-spotlight-art i {
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+}
+.project-spotlight-art small {
+  flex-basis: 100%;
+  margin-top: 19px;
+  text-align: center;
+  font: 11px var(--mono);
+  color: var(--muted);
+}
+.review-art {
+  transform: rotate(-1deg);
+}
+.more-projects {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.more-projects summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 64px;
+  cursor: pointer;
+  list-style: none;
+  font: 15px var(--mono);
+}
+.more-projects summary::-webkit-details-marker {
+  display: none;
+}
+.more-projects summary span {
+  color: var(--accent);
+  font-size: 24px;
+}
+.more-projects[open] summary span {
+  transform: rotate(45deg);
+}
+.more-projects .other-projects {
+  padding: 0 0 25px;
+}
+.case-interaction-intro {
+  margin-bottom: 24px;
+}
+.case-interaction-intro h2 {
+  font-size: clamp(27px, 3vw, 38px);
+  margin-bottom: 8px;
+}
+.case-interaction-intro p {
+  max-width: 620px;
+  color: var(--muted);
+}
+.case-content .interactive-system {
+  max-width: none;
+}
+@media (max-width: 800px) {
+  .hero {
+    padding-block: 75px 90px;
+  }
+  .hero::before {
+    inset: 25% -10px 0 32%;
+  }
+  .project-spotlight {
+    grid-template-columns: 1fr;
+  }
+  .project-spotlight-art {
+    max-width: 510px;
+  }
+}
+@media (max-width: 520px) {
+  .hero {
+    padding-block: 55px 70px;
+  }
+  .hero h1 {
+    font-size: clamp(64px, 18vw, 76px);
+  }
+  .hero-description {
+    font-size: 23px;
+  }
+  .project-spotlight {
+    padding: 26px 20px;
+  }
+  .project-spotlight-art {
+    gap: 5px;
+    padding: 25px 6px;
+  }
+  .project-spotlight-art span {
+    padding: 7px;
+    font-size: 10px;
+  }
+  .project-spotlight-art i {
+    width: 8px;
+  }
+  .case-interaction-intro p {
+    font-size: 15px;
+  }
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: 11px var(--mono);
+  white-space: nowrap;
+}
+.language-switch a {
+  display: grid;
+  place-items: center;
+  min-width: 36px;
+  min-height: 36px;
+  padding-inline: 5px;
+  color: var(--muted);
+  border-radius: 2px;
+}
+.language-switch a:hover,
+.language-switch a[aria-current="page"] {
+  background: var(--tint);
+  color: var(--ink);
+  text-decoration: none;
+}
+.language-switch a[aria-current="page"] {
+  font-weight: 700;
+}
+@media (max-width: 520px) {
+  .header-inner {
+    height: auto;
+    min-height: 66px;
+    flex-wrap: wrap;
+    gap: 8px 13px;
+    padding-block: 9px;
+  }
+  .header-inner .wordmark {
+    margin-right: auto;
+  }
+  .site-header nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .site-header nav a {
+    min-height: 36px;
+  }
+  .language-switch a {
+    min-width: 34px;
+    min-height: 34px;
   }
 }

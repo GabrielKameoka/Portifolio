@@ -1,5 +1,6 @@
 (() => {
   const root = document.documentElement;
+  const english = root.lang.startsWith("en");
   let saved;
   try {
     saved = localStorage.getItem("theme");
@@ -13,7 +14,13 @@
     if (button) {
       button.setAttribute(
         "aria-label",
-        dark ? "Ativar tema claro" : "Ativar tema escuro",
+        dark
+          ? english
+            ? "Switch to light theme"
+            : "Ativar tema claro"
+          : english
+            ? "Switch to dark theme"
+            : "Ativar tema escuro",
       );
       button.setAttribute("aria-pressed", String(dark));
     }

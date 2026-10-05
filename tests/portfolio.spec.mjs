@@ -4,11 +4,14 @@ const pages = [
   ["/", "Gabriel Mitsuru"],
   ["/projetos/sinalvortex.html", "SinalVortex"],
   ["/projetos/repcortex.html", "RepCortex"],
+  ["/en/index.html", "Gabriel Mitsuru"],
+  ["/en/projetos/sinalvortex.html", "SinalVortex"],
+  ["/en/projetos/repcortex.html", "RepCortex"],
 ];
 for (const [path, name] of pages) {
   for (const width of [390, 768, 1440]) {
     for (const theme of ["light", "dark"]) {
-      test(`${name} / ${width} / ${theme}`, async ({ page }, testInfo) => {
+      test(`${path} / ${width} / ${theme}`, async ({ page }, testInfo) => {
         const failures = [];
         page.on("pageerror", (error) => failures.push(error.message));
         page.on("console", (message) => {
@@ -98,11 +101,40 @@ test("Navigation, theme persistence, keyboard and reduced motion", async ({
   await expect(page.locator("html")).toHaveClass(/dark/);
   await page.getByRole("link", { name: "Todos os projetos" }).click();
   await expect(page).toHaveURL(/index.html#projetos$/);
-  await page
-    .getByRole("link", { name: "Explorar estudo de caso" })
-    .nth(1)
-    .click();
+  await page.getByRole("tab", { name: "RepCortex" }).click();
+  await page.getByRole("link", { name: "Explorar estudo de caso" }).click();
   await expect(page).toHaveURL(/repcortex.html$/);
+});
+test("Language switch keeps the current page and translates interactive feedback", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("link", { name: "English" }).click();
+  await expect(page).toHaveURL(/\/en\/index.html$/);
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect(
+    page.getByRole("heading", { name: "My projects" }),
+  ).toBeVisible();
+  await page.getByRole("tab", { name: "RepCortex" }).click();
+  await page.getByRole("link", { name: "Explore case study" }).click();
+  await expect(page).toHaveURL(/\/en\/projetos\/repcortex.html$/);
+  await page.getByRole("link", { name: "Portuguese" }).click();
+  await expect(page).toHaveURL(/\/projetos\/repcortex.html$/);
+  await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
+  await page.getByRole("link", { name: "English" }).click();
+  await page.getByRole("link", { name: "SinalVortex" }).last().click();
+  await expect(page).toHaveURL(/\/en\/projetos\/sinalvortex.html$/);
+  await page.getByRole("button", { name: "What if it fails?" }).click();
+  await expect(page.getByRole("status")).toContainText("Simulated failure", {
+    timeout: 6000,
+  });
+  await expect(
+    page.getByRole("button", { name: "Pause animations" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Switch to light theme" }).click();
+  await expect(
+    page.getByRole("button", { name: "Switch to dark theme" }),
+  ).toBeVisible();
 });
 test("All content and navigation remain available without JavaScript", async ({
   browser,
@@ -121,6 +153,7 @@ test("All content and navigation remain available without JavaScript", async ({
       page.locator('a[href="mailto:gabrielkameoka@gmail.com"]').first(),
     ).toBeAttached();
   }
+  await page.goto("http://127.0.0.1:4173/projetos/sinalvortex.html");
   await page.getByRole("link", { name: "Todos os projetos" }).click();
   await expect(page).toHaveURL(/index.html#projetos$/);
   await context.close();
@@ -147,7 +180,7 @@ test("Interactive diagram traces delivery and failure without calling a backend"
     if (["fetch", "xhr"].includes(request.resourceType()))
       requests.push(request.url());
   });
-  await page.goto("/");
+  await page.goto("/projetos/sinalvortex.html");
   const diagram = page.locator(".interactive-system");
   await diagram.getByRole("button", { name: "Enviar mensagem" }).click();
   await expect(diagram.locator('[data-flow="api"]')).toHaveClass(/flow-active/);
@@ -178,7 +211,7 @@ test("Interactive diagram traces delivery and failure without calling a backend"
 
 test("Simulation works by keyboard with reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/projetos/sinalvortex.html");
   const trigger = page.getByRole("button", { name: "E se falhar?" });
   await trigger.focus();
   await page.keyboard.press("Enter");
@@ -201,7 +234,7 @@ test("Workspace source tabs support keyboard navigation and remain readable", as
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+  await page.goto("/projetos/sinalvortex.html");
   await expect(page.locator("html")).toHaveClass(/dark/);
   await page.getByRole("tab", { name: "Fluxo da mensagem" }).focus();
   await page.keyboard.press("ArrowRight");
@@ -230,7 +263,7 @@ test("Workspace source tabs support keyboard navigation and remain readable", as
 
 test("Motion can be paused and the preference persists", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
-  await page.goto("/");
+  await page.goto("/projetos/sinalvortex.html");
   await page.getByRole("button", { name: "Pausar animações" }).click();
   await expect(page.locator("body")).toHaveClass(/motion-paused/);
   await page.reload();

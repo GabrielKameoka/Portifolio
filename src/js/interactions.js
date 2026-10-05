@@ -1,4 +1,35 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const english = document.documentElement.lang.startsWith("en");
+const copy = english
+  ? {
+      reduced: "Reduced motion is enabled in your system",
+      resume: "▶ Resume animations",
+      pause: "Ⅱ Pause animations",
+      worker: "Delivery, retries, and DLQ",
+      captured: "Email captured locally",
+      following: "Following the message…",
+      retry: "Temporary failure · retrying",
+      exhausted: "Retries exhausted",
+      retained: "Message retained for investigation",
+      complete: "Processing complete",
+      failed:
+        "Simulated failure: after the retries, the message stays in the DLQ.",
+      done: "Done. In the local demo, Mailpit would capture the email.",
+    }
+  : {
+      reduced: "Movimento reduzido pelo sistema",
+      resume: "▶ Ativar animações",
+      pause: "Ⅱ Pausar animações",
+      worker: "Entrega, retry e DLQ",
+      captured: "E-mail capturado localmente",
+      following: "Acompanhando a mensagem…",
+      retry: "Falha temporária · nova tentativa",
+      exhausted: "Tentativas esgotadas",
+      retained: "Mensagem retida para investigação",
+      complete: "Processamento concluído",
+      failed: "Falha simulada: após as tentativas, a mensagem fica na DLQ.",
+      done: "Pronto. Na demo local, o e-mail seria capturado no Mailpit.",
+    };
 const motionButton = document.querySelector(".motion-toggle");
 let paused = false;
 try {
@@ -16,10 +47,10 @@ const syncMotion = () => {
   motionButton.disabled = reducedMotion.matches;
   motionButton.setAttribute("aria-pressed", String(motionDisabled()));
   motionButton.textContent = reducedMotion.matches
-    ? "Movimento reduzido pelo sistema"
+    ? copy.reduced
     : paused
-      ? "▶ Ativar animações"
-      : "Ⅱ Pausar animações";
+      ? copy.resume
+      : copy.pause;
 };
 motionButton?.addEventListener("click", () => {
   paused = !paused;
@@ -129,10 +160,10 @@ if (diagram) {
     nodes.forEach((node) =>
       node.classList.remove("flow-active", "flow-complete"),
     );
-    workerCaption.textContent = "Entrega, retry e DLQ";
+    workerCaption.textContent = copy.worker;
     deliveryTitle.textContent = "Mailpit";
-    deliveryCaption.textContent = "E-mail capturado localmente";
-    status.textContent = "Acompanhando a mensagem…";
+    deliveryCaption.textContent = copy.captured;
+    status.textContent = copy.following;
     try {
       for (const step of ["api", "database", "queue", "worker"]) {
         activate(step);
@@ -140,18 +171,16 @@ if (diagram) {
       }
       if (failure) {
         diagram.classList.add("flow-failed");
-        workerCaption.textContent = "Falha temporária · nova tentativa";
+        workerCaption.textContent = copy.retry;
         await pause();
-        workerCaption.textContent = "Tentativas esgotadas";
+        workerCaption.textContent = copy.exhausted;
         deliveryTitle.textContent = "DLQ";
-        deliveryCaption.textContent = "Mensagem retida para investigação";
+        deliveryCaption.textContent = copy.retained;
       } else {
-        workerCaption.textContent = "Processamento concluído";
+        workerCaption.textContent = copy.complete;
       }
       activate("delivery");
-      status.textContent = failure
-        ? "Falha simulada: após as tentativas, a mensagem fica na DLQ."
-        : "Pronto. Na demo local, o e-mail seria capturado no Mailpit.";
+      status.textContent = failure ? copy.failed : copy.done;
       await pause();
       nodes.forEach((node) => {
         if (node.classList.contains("flow-active"))
@@ -216,8 +245,8 @@ function selectTab(tab, moveFocus = false) {
   if (!motionDisabled())
     panel.animate(
       [
-        { opacity: 0.2, transform: "translateY(9px)" },
-        { opacity: 1, transform: "translateY(0)" },
+        { transform: "translateY(9px)" },
+        { transform: "translateY(0)" },
       ],
       { duration: 320, easing: "cubic-bezier(.16,1,.3,1)" },
     );
@@ -271,4 +300,40 @@ if (!motionDisabled()) {
         },
       );
     });
+}
+
+const projectTabs = [
+  ...document.querySelectorAll('.project-choices [role="tab"]'),
+];
+if (projectTabs.length) {
+  document.querySelector(".project-choices").hidden = false;
+  const showProject = (tab, focus = false) => {
+    for (const candidate of projectTabs) {
+      const selected = candidate === tab;
+      candidate.setAttribute("aria-selected", String(selected));
+      candidate.tabIndex = selected ? 0 : -1;
+      document.getElementById(candidate.getAttribute("aria-controls")).hidden =
+        !selected;
+    }
+    if (focus) tab.focus();
+  };
+  projectTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => showProject(tab));
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key))
+        return;
+      event.preventDefault();
+      const next =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? projectTabs.length - 1
+            : (index +
+                (event.key === "ArrowRight" ? 1 : -1) +
+                projectTabs.length) %
+              projectTabs.length;
+      showProject(projectTabs[next], true);
+    });
+  });
+  showProject(projectTabs[0]);
 }
