@@ -64,6 +64,86 @@ motionButton?.addEventListener("click", () => {
 reducedMotion.addEventListener("change", syncMotion);
 syncMotion();
 
+// The solution map stays readable without JavaScript; enable its tabs only here.
+const flowTabs = [...document.querySelectorAll(".flow-track [role='tab']")];
+if (flowTabs.length) {
+  const flowDescriptions = english
+    ? [
+        "The request enters through the API and starts the flow.",
+        "Business rules process the request and coordinate the services.",
+        "The data layer returns a clear response to the interface.",
+      ]
+    : [
+        "A requisição chega pela API e inicia o fluxo.",
+        "As regras de negócio processam a solicitação e coordenam os serviços.",
+        "A camada de dados prepara uma resposta clara para a interface.",
+      ];
+  const flowCount = document.querySelector(".flow-count");
+  const flowPanel = document.querySelector(".flow-description");
+  const connectors = [...document.querySelectorAll(".flow-track > b")];
+  const selectFlowStep = (tab, moveFocus = false, animateChange = false) => {
+    const index = flowTabs.indexOf(tab);
+    const previousIndex = flowTabs.findIndex((item) => item.getAttribute("aria-selected") === "true");
+    flowTabs.forEach((item, itemIndex) => {
+      item.disabled = false;
+      item.tabIndex = itemIndex === index ? 0 : -1;
+      item.setAttribute("aria-selected", String(itemIndex === index));
+      item.classList.toggle("flow-step-active", itemIndex === index);
+    });
+    flowCount.textContent = `${String(index + 1).padStart(2, "0")} / 03`;
+    flowPanel.textContent = flowDescriptions[index];
+    if (animateChange && !motionDisabled()) {
+      tab.animate(
+        [
+          { transform: "translateY(0) scale(1)" },
+          { transform: "translateY(-3px) scale(1.025)", offset: 0.45 },
+          { transform: "translateY(0) scale(1)" },
+        ],
+        { duration: 360, easing: "cubic-bezier(.16,1,.3,1)" },
+      );
+      flowPanel.animate(
+        [
+          { opacity: 0.35, transform: "translateY(5px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ],
+        { duration: 260, easing: "ease-out" },
+      );
+      if (index === previousIndex + 1) {
+        const connector = connectors[previousIndex];
+        connector.classList.remove("flow-pulse");
+        void connector.offsetWidth;
+        connector.classList.add("flow-pulse");
+        connector.addEventListener("animationend", () => connector.classList.remove("flow-pulse"), { once: true });
+      }
+    }
+    if (moveFocus) tab.focus();
+  };
+  flowTabs.forEach((tab) => {
+    tab.addEventListener("click", () => selectFlowStep(tab, false, true));
+    tab.addEventListener("keydown", (event) => {
+      const offsets = { ArrowRight: 1, ArrowLeft: -1 };
+      if (!(event.key in offsets) && !["Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const index = flowTabs.indexOf(tab);
+      const next = event.key === "Home" ? 0 : event.key === "End" ? flowTabs.length - 1 : (index + offsets[event.key] + flowTabs.length) % flowTabs.length;
+      selectFlowStep(flowTabs[next], true, true);
+    });
+  });
+  selectFlowStep(flowTabs[0]);
+}
+
+const engineeringCard = document.querySelector(".engineering-card");
+if (engineeringCard && !motionDisabled()) {
+  engineeringCard.animate(
+    [{ opacity: 0, transform: "translateY(18px)" }, { opacity: 1, transform: "translateY(0)" }],
+    { duration: 620, delay: 180, easing: "cubic-bezier(.16,1,.3,1)", fill: "backwards" },
+  );
+  flowTabs.forEach((step, index) => step.animate(
+    [{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "translateY(0)" }],
+    { duration: 360, delay: 350 + index * 90, easing: "ease-out", fill: "backwards" },
+  ));
+}
+
 // A single opening sequence; the document never depends on animation to be visible.
 const opening = document.querySelectorAll(".name-line");
 if (!motionDisabled()) {
