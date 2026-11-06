@@ -1,11 +1,11 @@
 import { spawn } from "node:child_process";
+const npm = process.platform === "win32" ? "npm.cmd" : "npm";
 const processes = [
-  spawn(
-    "node_modules/.bin/tailwindcss",
-    ["-i", "src/input.css", "-o", "src/output.css", "--watch=always"],
-    { stdio: "inherit" },
-  ),
-  spawn("node_modules/.bin/vite", ["--host", "127.0.0.1"], {
+  spawn(npm, ["run", "css", "--", "--watch=always"], {
+    stdio: "inherit",
+    shell: process.platform === "win32",
+  }),
+  spawn(process.execPath, ["node_modules/vite/bin/vite.js", "--host", "127.0.0.1"], {
     stdio: "inherit",
   }),
 ];

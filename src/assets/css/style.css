@@ -2086,7 +2086,7 @@ h2 {
   font-size: 10px;
 }
 .experience-date {
-  font-size: 11px;
+  font-size: 13px;
 }
 .experience-list h3 {
   font-size: 25px;
@@ -2579,6 +2579,28 @@ body.motion-paused .interactive-system {
   .hero-description {
     font-size: 23px;
   }
+  .intro-role,
+  .project-context,
+  .tech-list,
+  .availability,
+  .flow-status,
+  .figure-link,
+  .interactive-system figcaption {
+    font-size: 11px;
+  }
+  .experience-date {
+    font-size: 12px;
+  }
+  .source-code {
+    font-size: 10px;
+  }
+  .figure-top > span:last-child {
+    font-size: 10px;
+  }
+  .workspace-tabs button,
+  .flow-buttons button {
+    font-size: 11px;
+  }
   .project-spotlight {
     padding: 26px 20px;
   }
@@ -2646,6 +2668,7 @@ body.motion-paused .interactive-system {
   }
   .site-header nav a {
     min-height: 36px;
+    font-size: 13px;
   }
   .language-switch a {
     min-width: 34px;
